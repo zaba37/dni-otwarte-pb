@@ -31,16 +31,13 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         DrawerItemHolder drawerHolder = new DrawerItemHolder();
-        View view = convertView;
+        View view;
 
-        if (view == null) {
-            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            view = inflater.inflate(layoutResID, parent, false);
-            drawerHolder.itemName = (TextView) view.findViewById(R.id.drawerItemName);
-            drawerHolder.icon = (ImageView) view.findViewById(R.id.drawerIcon);
-        }
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+        view = inflater.inflate(layoutResID, parent, false);
+        drawerHolder.itemName = (TextView) view.findViewById(R.id.drawerItemName);
+        drawerHolder.icon = (ImageView) view.findViewById(R.id.drawerIcon);
 
         DrawerItem dItem = this.drawerItemList.get(position);
         drawerHolder.icon.setImageDrawable(dItem.getImgRes());

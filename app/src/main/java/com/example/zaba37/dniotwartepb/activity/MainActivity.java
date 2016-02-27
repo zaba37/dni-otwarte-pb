@@ -2,14 +2,12 @@ package com.example.zaba37.dniotwartepb.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,8 +18,9 @@ import com.example.zaba37.dniotwartepb.Constants;
 import com.example.zaba37.dniotwartepb.R;
 import com.example.zaba37.dniotwartepb.adapter.DrawerAdapter;
 import com.example.zaba37.dniotwartepb.event.OnFragmentLaunchingEvent;
+import com.example.zaba37.dniotwartepb.fragment.HomePageFragment;
 import com.example.zaba37.dniotwartepb.fragment.LocalizationFragment;
-import com.example.zaba37.dniotwartepb.fragment.ScanerFragment;
+import com.example.zaba37.dniotwartepb.fragment.VisitedPlaceFragment;
 import com.example.zaba37.dniotwartepb.model.DrawerItem;
 
 import org.greenrobot.eventbus.EventBus;
@@ -38,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private List<DrawerItem> navigationDataList;
     private FragmentManager fm;
     private LocalizationFragment localizationFragment;
-    private ScanerFragment scanerFragment;
+    private VisitedPlaceFragment visitedPlaceFragment;
+    private HomePageFragment homePageFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        navigationDataList.add(new DrawerItem(getString(R.string.home_page_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.HOME_PAGE_TAG));
         navigationDataList.add(new DrawerItem(getString(R.string.localization_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.LOCALIZATION_TAG));
         navigationDataList.add(new DrawerItem(getString(R.string.scaner_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.SCANER_TAG));
 
@@ -65,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         setDrawerToggle();
+
+        getSupportActionBar().setTitle("" + getString(R.string.home_page_navigation_menu));
+
+        if (homePageFragment == null) {
+            homePageFragment = new HomePageFragment();
+        }
+
+        fm.beginTransaction().replace(R.id.fragmentContainer, homePageFragment).commit();
     }
 
     @Override
@@ -131,6 +140,14 @@ public class MainActivity extends AppCompatActivity {
         String name = drawerAdapter.getItem(event.getPosition()).getItemName();
 
         switch (tag) {
+            case Constants.HOME_PAGE_TAG:
+                getSupportActionBar().setTitle("" + name);
+                if (homePageFragment == null) {
+                    homePageFragment = new HomePageFragment();
+                }
+                fm.beginTransaction().replace(R.id.fragmentContainer, homePageFragment).commit();
+                drawerLayout.closeDrawers();
+                break;
             case Constants.LOCALIZATION_TAG:
                 getSupportActionBar().setTitle("" + name);
                 if (localizationFragment == null) {
@@ -141,10 +158,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case Constants.SCANER_TAG:
                 getSupportActionBar().setTitle("" + name);
-                if (scanerFragment == null) {
-                    scanerFragment = new ScanerFragment();
+                if (visitedPlaceFragment == null) {
+                    visitedPlaceFragment = new VisitedPlaceFragment();
                 }
-                fm.beginTransaction().replace(R.id.fragmentContainer, scanerFragment).commit();
+                fm.beginTransaction().replace(R.id.fragmentContainer, visitedPlaceFragment).commit();
                 drawerLayout.closeDrawers();
                 break;
             default:
