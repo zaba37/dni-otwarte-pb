@@ -1,18 +1,16 @@
-package com.example.zaba37.dniotwartepb.activity;
+package com.example.zaba37.dniotwartepb.fragment;
 
 import android.os.Bundle;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
-/**
- * Created by marcin on 27.02.16.
- */
-public class MapFragment extends SupportMapFragment implements GoogleApiClient.ConnectionCallbacks,
+
+public class CustomMapFragment extends MapFragment implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         GoogleMap.OnInfoWindowClickListener,
         GoogleMap.OnMapLongClickListener,

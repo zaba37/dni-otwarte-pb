@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/map"
-        android:name="com.example.zaba37.dniotwartepb.activity.MapFragment"
+        android:name="com.example.zaba37.dniotwartepb.fragment.CustomMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
