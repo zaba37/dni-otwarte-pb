@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtTarget"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Wydział Informatyki"
+        android:textAlignment="center"
+        android:textSize="40sp" />
+
+    <ImageView
+        android:id="@+id/tlo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/tlo" />
+
+    <ImageView
+        android:id="@+id/imgCompass"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:src="@drawable/wskazowki" />
+
+    <ImageView
+        android:id="@+id/waiting"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40sp"
+        android:src="@drawable/napis"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imgCompass"
+        android:layout_alignParentBottom="true"
+        android:text="300 m"
+        android:textAlignment="center"
+        android:textColor="@color/pbGreen"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+</RelativeLayout>
