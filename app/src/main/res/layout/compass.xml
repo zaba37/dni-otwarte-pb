@@ -44,7 +44,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/imgCompass"
         android:layout_alignParentBottom="true"
-        android:text="300 m"
         android:textAlignment="center"
         android:textColor="@color/pbGreen"
         android:textSize="30sp"
