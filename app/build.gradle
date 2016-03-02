@@ -32,8 +32,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:design:23.2.0'
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.dlazaro66.qrcodereaderview:qrcodereaderview:1.0.0'
+    compile 'com.qozix:tileview:2.0.10'
     compile 'com.android.support:support-v4:23.2.0'
-    compile 'com.google.android.gms:play-services-maps:8.4.0'
-    compile 'com.google.android.gms:play-services-location:8.4.0'
 }

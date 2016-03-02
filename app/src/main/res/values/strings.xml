@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dni otwarte PB</string>
+    <string name="app_name">Ddzień otwarty PB</string>
     <string name="title_activity_main">MainActivity</string>
 
     <!--NAVIGATION DROWER-->
@@ -11,4 +11,5 @@
 
     <string name="title_activity_scanner">ScannerActivity</string>
     <string name="google_api_key">AIzaSyBBIpBpwCpkctVGeOmxI9Bo4D6bR-iya8U</string>
+    <string name="asd">8</string>
 </resources>

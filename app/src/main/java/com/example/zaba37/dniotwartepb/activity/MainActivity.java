@@ -4,7 +4,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,9 +17,7 @@ import com.example.zaba37.dniotwartepb.Constants;
 import com.example.zaba37.dniotwartepb.R;
 import com.example.zaba37.dniotwartepb.adapter.DrawerAdapter;
 import com.example.zaba37.dniotwartepb.event.OnFragmentLaunchingEvent;
-import com.example.zaba37.dniotwartepb.fragment.HomePageFragment;
-import com.example.zaba37.dniotwartepb.fragment.LocalizationFragment;
-import com.example.zaba37.dniotwartepb.fragment.VisitedPlaceFragment;
+import com.example.zaba37.dniotwartepb.fragment.MapFragment;
 import com.example.zaba37.dniotwartepb.model.DrawerItem;
 
 import org.greenrobot.eventbus.EventBus;
@@ -36,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     private List<DrawerItem> navigationDataList;
     private FragmentManager fm;
-    private LocalizationFragment localizationFragment;
-    private VisitedPlaceFragment visitedPlaceFragment;
-    private HomePageFragment homePageFragment;
+    private MapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         final ActionBar actionBar = getSupportActionBar();
 
-        if(actionBar!=null)
-        {
+        if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_dehaze_black_24dp);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -69,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("" + getString(R.string.home_page_navigation_menu));
 
-        if (homePageFragment == null) {
-            homePageFragment = new HomePageFragment();
+        if (mapFragment == null) {
+            mapFragment = new MapFragment();
         }
 
-        fm.beginTransaction().replace(R.id.fragmentContainer, homePageFragment).commit();
+        fm.beginTransaction().replace(R.id.fragmentContainer, mapFragment).commit();
     }
 
     @Override
@@ -142,26 +136,10 @@ public class MainActivity extends AppCompatActivity {
         switch (tag) {
             case Constants.HOME_PAGE_TAG:
                 getSupportActionBar().setTitle("" + name);
-                if (homePageFragment == null) {
-                    homePageFragment = new HomePageFragment();
+                if (mapFragment == null) {
+                    mapFragment = new MapFragment();
                 }
-                fm.beginTransaction().replace(R.id.fragmentContainer, homePageFragment).commit();
-                drawerLayout.closeDrawers();
-                break;
-            case Constants.LOCALIZATION_TAG:
-                getSupportActionBar().setTitle("" + name);
-                if (localizationFragment == null) {
-                    localizationFragment = new LocalizationFragment();
-                }
-                fm.beginTransaction().replace(R.id.fragmentContainer, localizationFragment).commit();
-                drawerLayout.closeDrawers();
-                break;
-            case Constants.SCANER_TAG:
-                getSupportActionBar().setTitle("" + name);
-                if (visitedPlaceFragment == null) {
-                    visitedPlaceFragment = new VisitedPlaceFragment();
-                }
-                fm.beginTransaction().replace(R.id.fragmentContainer, visitedPlaceFragment).commit();
+                fm.beginTransaction().replace(R.id.fragmentContainer, mapFragment).commit();
                 drawerLayout.closeDrawers();
                 break;
             default:
