@@ -41,17 +41,45 @@ public class MapFragment extends Fragment {
         tileView.addDetailLevel(0.5000f, "map/500/tile-%d_%d.png");
         tileView.addDetailLevel(1.0000f, "map/1000/tile-%d_%d.png");
 
-        tileView.defineBounds(0, 0, 1, 1);
+        //tileView.defineBounds(0, 0, 1, 1);
+        tileView.defineBounds(0, 0, 445, 374);
         tileView.setMarkerAnchorPoints(-0.5f, -0.5f);
         tileView.setScale(0.0f);
 
         tileView.setScaleLimits(0, 4);
 
-        ImageView marker = new ImageView( getActivity() );
-        marker.setTag(new double[] {0.3, 0.3});
-        marker.setImageResource(R.drawable.map_marker_normal);
-        tileView.getMarkerLayout().setMarkerTapListener( markerTapListener );
-        tileView.addMarker( marker, 0.3, 0.3, null, null );
+        ImageView wi = new ImageView(getActivity());
+        ImageView wm = new ImageView(getActivity());
+        ImageView we = new ImageView(getActivity());
+        ImageView wb = new ImageView(getActivity());
+        ImageView iet = new ImageView(getActivity());
+        ImageView cnk = new ImageView(getActivity());
+
+        wi.setTag(new double[]{337, 230});
+        wm.setTag(new double[]{266, 170});
+        we.setTag(new double[]{229, 136});
+        wb.setTag(new double[]{187, 118});
+        iet.setTag(new double[]{221, 104});
+        cnk.setTag(new double[]{67, 40});
+
+        wi.setImageResource(R.drawable.map_marker_normal);
+        wm.setImageResource(R.drawable.map_marker_normal);
+        we.setImageResource(R.drawable.map_marker_normal);
+        wb.setImageResource(R.drawable.map_marker_normal);
+        iet.setImageResource(R.drawable.map_marker_normal);
+        cnk.setImageResource(R.drawable.map_marker_normal);
+
+        tileView.getMarkerLayout().setMarkerTapListener(markerTapListener);
+
+        tileView.addMarker(wi, 337, 230, null, null);
+        tileView.addMarker(wm,266,170,null,null);
+        tileView.addMarker(we,229,136,null,null);
+        tileView.addMarker(wb,187,118,null,null);
+        tileView.addMarker(iet,221,104,null,null);
+        tileView.addMarker(cnk,67,40,null,null);
+
+
+        tileView.setViewportPadding(1000);
         frame.addView(tileView);
 
         frameTo(0.5,0.5);
