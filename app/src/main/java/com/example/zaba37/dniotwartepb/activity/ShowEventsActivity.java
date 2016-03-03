@@ -13,10 +13,12 @@ public class ShowEventsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_events);
+        getSupportActionBar().setTitle("" + getString(R.string.event_activity_title));
 
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_hardware_keyboard_backspace);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }

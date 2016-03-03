@@ -173,8 +173,11 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_hardware_keyboard_backspace);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        getSupportActionBar().setTitle("" + getString(R.string.event_activity_title));
     }
 
     @Override

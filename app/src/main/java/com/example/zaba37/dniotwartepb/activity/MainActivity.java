@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_dehaze_black_24dp);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_image_dehaze);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        navigationDataList.add(new DrawerItem(getString(R.string.home_page_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.HOME_PAGE_TAG));
+        navigationDataList.add(new DrawerItem(getString(R.string.main_screen_title), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.HOME_PAGE_TAG));
         navigationDataList.add(new DrawerItem(getString(R.string.localization_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.LOCALIZATION_TAG));
         navigationDataList.add(new DrawerItem(getString(R.string.scaner_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.SCANER_TAG));
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         setDrawerToggle();
 
-        getSupportActionBar().setTitle("" + getString(R.string.home_page_navigation_menu));
+        getSupportActionBar().setTitle("" + getString(R.string.main_screen_title));
 
         if (mapFragment == null) {
             mapFragment = new MapFragment();
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setDrawerToggle() {
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_dehaze_black_24dp, R.string.drawer_open, R.string.drawer_close) {
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_image_dehaze, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);

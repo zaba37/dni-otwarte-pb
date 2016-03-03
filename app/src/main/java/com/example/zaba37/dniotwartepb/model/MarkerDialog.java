@@ -3,6 +3,7 @@ package com.example.zaba37.dniotwartepb.model;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Typeface;
@@ -42,14 +43,25 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
         // children
         LinearLayout bubble = new LinearLayout( context );
         GradientDrawable drawable = new GradientDrawable();
-        drawable.setColor( 0xFF313231 );
+        drawable.setColor(Color.parseColor("#657e49"));
         drawable.setCornerRadius(getDIP(context, 4));
         bubble.setBackgroundDrawable(drawable);
         bubble.setId(1);
         int padding = getDIP( context, 17 );
         bubble.setPadding( padding, padding, padding, padding );
         LayoutParams bubbleLayout = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
-        addView( bubble, bubbleLayout );
+        addView(bubble, bubbleLayout);
+
+//        LinearLayout bubbleBorder = new LinearLayout( context );
+//        GradientDrawable drawableBorder = new GradientDrawable();
+//        drawableBorder.setColor(Color.WHITE);
+//        drawableBorder.setCornerRadius(getDIP(context, 4));
+//        bubbleBorder.setBackgroundDrawable(drawableBorder);
+//        bubbleBorder.setId(6);
+//        int paddingBorder = getDIP( context, 15 );
+//        bubbleBorder.setPadding( paddingBorder, paddingBorder, paddingBorder, paddingBorder );
+//        LayoutParams bubbleLayoutBorder = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+//        addView(bubbleBorder, bubbleLayoutBorder);
 
         Nub nub = new Nub( context );
         LayoutParams nubLayout = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
@@ -70,13 +82,13 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
         LinearLayout.LayoutParams titleLayout = new LinearLayout.LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
         labels.addView( title, titleLayout );
 
-        subtitle = new TextView( context );
-        subtitle.setTextColor(0xFF88afca);
-        subtitle.setTypeface(Typeface.SANS_SERIF);
-        subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        subtitle.setMaxWidth(maxWidth);
-        LinearLayout.LayoutParams subtitleLayout = new LinearLayout.LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
-        labels.addView(subtitle, subtitleLayout);
+//        subtitle = new TextView( context );
+//        subtitle.setTextColor(0xFF88afca);
+//        subtitle.setTypeface(Typeface.SANS_SERIF);
+//        subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+//        subtitle.setMaxWidth(maxWidth);
+//        LinearLayout.LayoutParams subtitleLayout = new LinearLayout.LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+//        labels.addView(subtitle, subtitleLayout);
 
         RelativeLayout iconColumn = new RelativeLayout( context );
         LayoutParams iconColumnLayout = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT );
@@ -94,6 +106,7 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
         Button button = new Button(context);
         button.setId(3);
         button.setText("Prowadź");
+        button.setTextColor(Color.WHITE);
         LinearLayout.LayoutParams buttonLayout = new LinearLayout.LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT );
         labels.addView( button, buttonLayout );
         button.setOnClickListener(this);
@@ -101,6 +114,7 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
         Button button2 = new Button(context);
         button2.setId( 4 );
         button2.setText("Wydarzenia");
+        button2.setTextColor(Color.WHITE);
         LinearLayout.LayoutParams buttonLayout2 = new LinearLayout.LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT );
         labels.addView( button2, buttonLayout2 );
         button2.setOnClickListener(this);
@@ -151,11 +165,13 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
 
         public Nub( Context context ) {
 
-            super( context );
+            super(context);
 
-            paint.setStyle( Paint.Style.FILL );
-            paint.setColor( 0xFF313231 );
-            paint.setAntiAlias( true );
+            paint.setStyle(Paint.Style.FILL);
+           // paint.setColor( 0xFF313231 );
+            paint.setColor(Color.parseColor("#657e49"));
+
+            paint.setAntiAlias(true );
 
             path.lineTo( getDIP( context, 20 ), 0 );
             path.lineTo( getDIP( context, 10 ), getDIP( context, 15 ) );

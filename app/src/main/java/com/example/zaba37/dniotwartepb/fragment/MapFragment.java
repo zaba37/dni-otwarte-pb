@@ -32,27 +32,30 @@ public class MapFragment extends Fragment {
         frame = (FrameLayout) view.findViewById(R.id.frameMap);
 
         tileView = new TileView(getActivity());
-        tileView.setSize(8967, 6726);
+        tileView.setSize(3560, 2993);
 
-        tileView.setBackgroundColor(0xFFe7e7e7 );
+        tileView.setBackgroundColor(0xFFe7e7e7);
 
-        tileView.addDetailLevel(0.0125f, "map/phi-62500-%d_%d.jpg");
-        tileView.addDetailLevel( 0.2500f, "map/phi-125000-%d_%d.jpg" );
-        tileView.addDetailLevel( 0.5000f, "map/phi-250000-%d_%d.jpg" );
-        tileView.addDetailLevel(1.0000f, "map/phi-500000-%d_%d.jpg");
+        tileView.addDetailLevel(0.1250f, "map/125/tile-%d_%d.png");
+        tileView.addDetailLevel(0.2500f, "map/250/tile-%d_%d.png");
+        tileView.addDetailLevel(0.5000f, "map/500/tile-%d_%d.png");
+        tileView.addDetailLevel(1.0000f, "map/1000/tile-%d_%d.png");
 
-        frame.setBackgroundColor(Color.BLUE);
-        tileView.setScaleLimits(0, 2);
+        tileView.defineBounds(0, 0, 1, 1);
+        tileView.setMarkerAnchorPoints(-0.5f, -0.5f);
+        tileView.setScale(0.0f);
 
-        // start small and allow zoom
-        tileView.setScale( 0.3f );
+        tileView.setScaleLimits(0, 4);
 
         ImageView marker = new ImageView( getActivity() );
-        marker.setTag(new double[] {2000, 2000});
+        marker.setTag(new double[] {0.3, 0.3});
         marker.setImageResource(R.drawable.map_marker_normal);
         tileView.getMarkerLayout().setMarkerTapListener( markerTapListener );
-        tileView.addMarker( marker, 2000, 2000, null, null );
+        tileView.addMarker( marker, 0.3, 0.3, null, null );
         frame.addView(tileView);
+
+        frameTo(0.5,0.5);
+
         return view;
     }
 
@@ -116,7 +119,7 @@ public class MapFragment extends Fragment {
             callout.transitionIn();
             // stub out some text
             callout.setTitle( "Wydział Infomatyczny" );
-            callout.setSubtitle( "Info window at coordinate:\n" + position[1] + ", " + position[0] );
+//            callout.setSubtitle( "Info window at coordinate:\n" + position[1] + ", " + position[0] );
         }
     };
 }

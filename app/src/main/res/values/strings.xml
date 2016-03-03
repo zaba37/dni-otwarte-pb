@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Ddzień otwarty PB</string>
+    <string name="app_name">Dzień Otwarty PB</string>
+    <string name="main_screen_title">Mapa wydarzeń</string>
+    <string name="event_activity_title">Wydarzenia</string>
     <string name="title_activity_main">MainActivity</string>
 
     <!--NAVIGATION DROWER-->
