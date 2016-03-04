@@ -45,6 +45,7 @@ public class MapFragment extends Fragment {
 
         //tileView.defineBounds(0, 0, 1, 1);
         tileView.defineBounds(0, 0, 445, 374);
+        //tileView.defineBounds(0,0,2018,1499);
         tileView.setMarkerAnchorPoints(-0.5f, -0.5f);
         tileView.setScale(0.0f);
 
@@ -138,13 +139,14 @@ public class MapFragment extends Fragment {
         public void onMarkerTap(View view, int x, int y) {
             // get reference to the TileView
             TileView tileView = getTileView();
-            tileView.setScale(2);
+            //tileView.setScale(2);
+
             // we saved the coordinate in the marker's tag
             //double[] position = (double[]) view.getTag();
             MarkerDetails markerDetails = (MarkerDetails) view.getTag();
             // lets center the screen to that coordinate
 
-            tileView.slideToAndCenter(x, y);
+            //tileView.slideToAndCenter(x, y);
             // create a simple callout
             MarkerDialog callout = new MarkerDialog(view.getContext(), markerDetails);
             // add it to the view tree at the same position and offset as the marker that invoked it
@@ -153,9 +155,9 @@ public class MapFragment extends Fragment {
             callout.transitionIn();
             // stub out some text
             callout.setTitle(markerDetails.getTitle());
-           // tileView.setScale(4.0f);
-            tileView.slideToAndCenter(x, y);
-//            callout.setSubtitle( "Info window at coordinate:\n" + position[1] + ", " + position[0] );
+
+            tileView.setScale(4);
+            tileView.moveToMarker(view, false);
         }
     };
 }
