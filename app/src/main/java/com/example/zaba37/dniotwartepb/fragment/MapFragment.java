@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.zaba37.dniotwartepb.R;
+import com.example.zaba37.dniotwartepb.model.MarkerDetails;
 import com.example.zaba37.dniotwartepb.model.MarkerDialog;
 import com.qozix.tileview.TileView;
 import com.qozix.tileview.markers.MarkerLayout;
@@ -19,7 +20,8 @@ public class MapFragment extends Fragment {
     private FrameLayout frame;
     private TileView tileView;
 
-    public MapFragment() {}
+    public MapFragment() {
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -41,31 +43,58 @@ public class MapFragment extends Fragment {
         tileView.addDetailLevel(0.5000f, "map/500/tile-%d_%d.png");
         tileView.addDetailLevel(1.0000f, "map/1000/tile-%d_%d.png");
 
-        tileView.defineBounds(0, 0, 1, 1);
+        //tileView.defineBounds(0, 0, 1, 1);
+        tileView.defineBounds(0, 0, 445, 374);
         tileView.setMarkerAnchorPoints(-0.5f, -0.5f);
         tileView.setScale(0.0f);
 
         tileView.setScaleLimits(0, 4);
 
-        ImageView marker = new ImageView( getActivity() );
-        marker.setTag(new double[]{0.3, 0.3});
-        marker.setImageResource(R.drawable.map_marker_normal);
+        ImageView wi = new ImageView(getActivity());
+        ImageView wm = new ImageView(getActivity());
+        ImageView we = new ImageView(getActivity());
+        ImageView wb = new ImageView(getActivity());
+        ImageView iet = new ImageView(getActivity());
+        ImageView cnk = new ImageView(getActivity());
+
+        //[]{x,y,latitude,longtidude,index}
+        wi.setTag(new MarkerDetails(337, 230, 53.117228, 23.146783, "Wydział Informatyczny"));
+        wm.setTag(new MarkerDetails(266, 170, 53.117646, 23.148751, "Wydział Mechaniczny"));
+        we.setTag(new MarkerDetails(229, 136, 53.117843, 23.149669, "Wydział Elektryczny"));
+        wb.setTag(new MarkerDetails(187, 118, 53.118367, 23.152217, "Wydział Budownictwa i Inżynierii Środowiska"));
+        iet.setTag(new MarkerDetails(221, 104, 53.117466, 23.152120, "Inno Eko Tech"));
+        cnk.setTag(new MarkerDetails(67, 40, 53.118905, 23.154169, "Centrum Nowoczesnego Kształcenia"));
+
+        wi.setImageResource(R.drawable.map_marker_normal);
+        wm.setImageResource(R.drawable.map_marker_normal);
+        we.setImageResource(R.drawable.map_marker_normal);
+        wb.setImageResource(R.drawable.map_marker_normal);
+        iet.setImageResource(R.drawable.map_marker_normal);
+        cnk.setImageResource(R.drawable.map_marker_normal);
+
         tileView.getMarkerLayout().setMarkerTapListener(markerTapListener);
-        tileView.addMarker(marker, 0.3, 0.3, null, null);
+
+        tileView.addMarker(wi, 337, 230, null, null);
+        tileView.addMarker(wm, 266, 170, null, null);
+        tileView.addMarker(we, 229, 136, null, null);
+        tileView.addMarker(wb, 187, 118, null, null);
+        tileView.addMarker(iet, 221, 104, null, null);
+        tileView.addMarker(cnk, 67, 40, null, null);
+
+
+        tileView.setViewportPadding(1000);
         frame.addView(tileView);
 
         frameTo(0.5, 0.5);
 
-        tileView.setViewportPadding(500);
-
         return view;
     }
 
-    public TileView getTileView(){
+    public TileView getTileView() {
         return tileView;
     }
 
-    public void frameTo( final double x, final double y ) {
+    public void frameTo(final double x, final double y) {
         tileView.post(new Runnable() {
             @Override
             public void run() {
@@ -106,21 +135,26 @@ public class MapFragment extends Fragment {
     private MarkerLayout.MarkerTapListener markerTapListener = new MarkerLayout.MarkerTapListener() {
 
         @Override
-        public void onMarkerTap( View view, int x, int y ) {
+        public void onMarkerTap(View view, int x, int y) {
             // get reference to the TileView
             TileView tileView = getTileView();
+            tileView.setScale(2);
             // we saved the coordinate in the marker's tag
-            double[] position = (double[]) view.getTag();
+            //double[] position = (double[]) view.getTag();
+            MarkerDetails markerDetails = (MarkerDetails) view.getTag();
             // lets center the screen to that coordinate
-            tileView.slideToAndCenter( position[0], position[1] );
+
+            tileView.slideToAndCenter(x, y);
             // create a simple callout
-            MarkerDialog callout = new MarkerDialog( view.getContext() );
+            MarkerDialog callout = new MarkerDialog(view.getContext(), markerDetails);
             // add it to the view tree at the same position and offset as the marker that invoked it
-            tileView.addCallout( callout, position[0], position[1], -0.5f, -1.0f );
+            tileView.addCallout(callout, markerDetails.getX(), markerDetails.getY(), -0.5f, -1.0f);
             // a little sugar
             callout.transitionIn();
             // stub out some text
-            callout.setTitle( "Wydział Infomatyczny" );
+            callout.setTitle(markerDetails.getTitle());
+           // tileView.setScale(4.0f);
+            tileView.slideToAndCenter(x, y);
 //            callout.setSubtitle( "Info window at coordinate:\n" + position[1] + ", " + position[0] );
         }
     };

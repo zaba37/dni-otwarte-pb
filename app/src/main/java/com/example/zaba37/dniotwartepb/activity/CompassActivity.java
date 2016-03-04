@@ -34,6 +34,7 @@ import com.example.zaba37.dniotwartepb.R;
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
 
     private TextView distance;
+    private TextView name;
     private ImageView imgCompass;
     private float currentDegree;
     private SensorManager sensorManager;
@@ -49,6 +50,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //targetLatitude = 53.136975; PIZZERIA
         //targetLongtitude = 23.175302;
         //53.117562, 23.142329 SPOLEM
@@ -63,11 +65,20 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         //53.117234, 23.146783 WI
         //KRASZ 53.137167, 23.174905
         currentDegree = 0f;
-        targetLongtitude = 23.174905; //lokalizacja przy moim bloku, do testowania
-        targetLatitude = 53.137167;
+
         setContentView(R.layout.compass);
         imgCompass = (ImageView) findViewById(R.id.imgCompass);
         distance = (TextView) findViewById(R.id.distance);
+        name = (TextView) findViewById(R.id.txtTarget);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            targetLatitude = extras.getDouble("LATITUDE");
+            targetLongtitude = extras.getDouble("LONGTITUDE");
+            name.setText(extras.getString("TITLE"));
+        } else {
+            targetLongtitude = 0;
+            targetLatitude = 0;  //TODO obsluzyc
+        }
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         targetLocation = new Location("dummyprovider");
         targetLocation.setLatitude(targetLatitude);
