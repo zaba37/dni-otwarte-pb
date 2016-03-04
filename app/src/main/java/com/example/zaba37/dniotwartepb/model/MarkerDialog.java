@@ -27,33 +27,33 @@ import com.example.zaba37.dniotwartepb.activity.ShowEventsActivity;
 /**
  * Created by zaba3 on 02.03.2016.
  */
-public class MarkerDialog extends RelativeLayout implements View.OnClickListener{
+public class MarkerDialog extends RelativeLayout implements View.OnClickListener {
 
     private TextView title;
     private TextView subtitle;
-    private double[] tag;
+    private MarkerDetails markerDetails;
 
 
-    private static int getDIP( Context context, int pixels ) {
+    private static int getDIP(Context context, int pixels) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, context.getResources().getDisplayMetrics());
     }
 
-    public MarkerDialog( Context context, double[] tag ) {
+    public MarkerDialog(Context context, MarkerDetails markerDetails) {
 
-        super( context );
+        super(context);
 
-        this.tag = tag;
+        this.markerDetails = markerDetails;
 
         // children
-        LinearLayout bubble = new LinearLayout( context );
+        LinearLayout bubble = new LinearLayout(context);
         GradientDrawable drawable = new GradientDrawable();
         drawable.setColor(Color.parseColor("#657e49"));
         drawable.setCornerRadius(getDIP(context, 4));
         bubble.setBackgroundDrawable(drawable);
         bubble.setId(1);
-        int padding = getDIP( context, 17 );
-        bubble.setPadding( padding, padding, padding, padding );
-        LayoutParams bubbleLayout = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+        int padding = getDIP(context, 17);
+        bubble.setPadding(padding, padding, padding, padding);
+        LayoutParams bubbleLayout = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         addView(bubble, bubbleLayout);
 
 //        LinearLayout bubbleBorder = new LinearLayout( context );
@@ -67,24 +67,24 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
 //        LayoutParams bubbleLayoutBorder = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
 //        addView(bubbleBorder, bubbleLayoutBorder);
 
-        Nub nub = new Nub( context );
-        LayoutParams nubLayout = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
-        nubLayout.addRule( RelativeLayout.BELOW, bubble.getId() );
+        Nub nub = new Nub(context);
+        LayoutParams nubLayout = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        nubLayout.addRule(RelativeLayout.BELOW, bubble.getId());
         nubLayout.addRule(RelativeLayout.CENTER_IN_PARENT);
         addView(nub, nubLayout);
 
-        LinearLayout labels = new LinearLayout( context );
+        LinearLayout labels = new LinearLayout(context);
         labels.setOrientation(LinearLayout.VERTICAL);
-        LayoutParams labelsLayout = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
-        bubble.addView( labels, labelsLayout );
+        LayoutParams labelsLayout = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        bubble.addView(labels, labelsLayout);
 
-        int maxWidth = getDIP( context, 230 );
-        title = new TextView( context );
+        int maxWidth = getDIP(context, 230);
+        title = new TextView(context);
         title.setTextColor(0xFFFFFFFF);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 21);
         title.setMaxWidth(maxWidth);
-        LinearLayout.LayoutParams titleLayout = new LinearLayout.LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
-        labels.addView( title, titleLayout );
+        LinearLayout.LayoutParams titleLayout = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        labels.addView(title, titleLayout);
 
 //        subtitle = new TextView( context );
 //        subtitle.setTextColor(0xFF88afca);
@@ -94,71 +94,71 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
 //        LinearLayout.LayoutParams subtitleLayout = new LinearLayout.LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
 //        labels.addView(subtitle, subtitleLayout);
 
-        RelativeLayout iconColumn = new RelativeLayout( context );
-        LayoutParams iconColumnLayout = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT );
+        RelativeLayout iconColumn = new RelativeLayout(context);
+        LayoutParams iconColumnLayout = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         bubble.addView(iconColumn, iconColumnLayout);
 
-        ImageView icon = new ImageView( context );
-        icon.setId( 2 );
+        ImageView icon = new ImageView(context);
+        icon.setId(2);
         //icon.setImageResource( R.drawable.callout_info_icon );
         icon.setScaleType(ImageView.ScaleType.MATRIX);
-        LayoutParams iconLayout = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
-        iconLayout.addRule( RelativeLayout.CENTER_VERTICAL );
-        iconLayout.leftMargin = getDIP( context, 10 );
+        LayoutParams iconLayout = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        iconLayout.addRule(RelativeLayout.CENTER_VERTICAL);
+        iconLayout.leftMargin = getDIP(context, 10);
         iconColumn.addView(icon, iconLayout);
 
         Button button = new Button(context);
         button.setId(3);
         button.setText("Prowadź");
         button.setTextColor(Color.WHITE);
-        LinearLayout.LayoutParams buttonLayout = new LinearLayout.LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT );
-        labels.addView( button, buttonLayout );
+        LinearLayout.LayoutParams buttonLayout = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        labels.addView(button, buttonLayout);
         button.setOnClickListener(this);
 
         Button button2 = new Button(context);
-        button2.setId( 4 );
+        button2.setId(4);
         button2.setText("Wydarzenia");
         button2.setTextColor(Color.WHITE);
-        LinearLayout.LayoutParams buttonLayout2 = new LinearLayout.LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT );
-        labels.addView( button2, buttonLayout2 );
+        LinearLayout.LayoutParams buttonLayout2 = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        labels.addView(button2, buttonLayout2);
         button2.setOnClickListener(this);
     }
 
-    public void setTitle( CharSequence text ) {
-        title.setText( text );
+    public void setTitle(CharSequence text) {
+        title.setText(text);
     }
 
-    public void setSubtitle( CharSequence text ) {
-        subtitle.setText( text );
+    public void setSubtitle(CharSequence text) {
+        subtitle.setText(text);
     }
 
     public void transitionIn() {
 
-        ScaleAnimation scaleAnimation = new ScaleAnimation( 0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1f );
-        scaleAnimation.setInterpolator( new OvershootInterpolator( 1.2f ) );
-        scaleAnimation.setDuration( 250 );
+        ScaleAnimation scaleAnimation = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1f);
+        scaleAnimation.setInterpolator(new OvershootInterpolator(1.2f));
+        scaleAnimation.setDuration(250);
 
-        AlphaAnimation alphaAnimation = new AlphaAnimation( 0, 1f );
-        alphaAnimation.setDuration( 200 );
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1f);
+        alphaAnimation.setDuration(200);
 
-        AnimationSet animationSet = new AnimationSet( false );
+        AnimationSet animationSet = new AnimationSet(false);
 
-        animationSet.addAnimation( scaleAnimation );
-        animationSet.addAnimation( alphaAnimation );
+        animationSet.addAnimation(scaleAnimation);
+        animationSet.addAnimation(alphaAnimation);
 
-        startAnimation( animationSet );
+        startAnimation(animationSet);
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case 3:
                 //[]{x,y,latitude,longtidude,index}
                 Intent intent = new Intent(getContext(), CompassActivity.class);
-                intent.putExtra("LATITUDE",tag[2]);
-                intent.putExtra("LONGTITUDE",tag[3]);
-                intent.putExtra("ID",tag[4]);
+                intent.putExtra("LATITUDE", markerDetails.getLatitude());
+                intent.putExtra("LONGTITUDE", markerDetails.getLongtitude());
+                intent.putExtra("TITLE", markerDetails.getTitle());
                 getContext().startActivity(intent);
                 break;
             case 4:
@@ -172,31 +172,31 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
         private Paint paint = new Paint();
         private Path path = new Path();
 
-        public Nub( Context context ) {
+        public Nub(Context context) {
 
             super(context);
 
             paint.setStyle(Paint.Style.FILL);
-           // paint.setColor( 0xFF313231 );
+            // paint.setColor( 0xFF313231 );
             paint.setColor(Color.parseColor("#657e49"));
 
-            paint.setAntiAlias(true );
+            paint.setAntiAlias(true);
 
-            path.lineTo( getDIP( context, 20 ), 0 );
-            path.lineTo( getDIP( context, 10 ), getDIP( context, 15 ) );
+            path.lineTo(getDIP(context, 20), 0);
+            path.lineTo(getDIP(context, 10), getDIP(context, 15));
             path.close();
 
         }
 
         @Override
-        protected void onMeasure( int widthMeasureSpec, int heightMeasureSpec ) {
-            setMeasuredDimension( getDIP( getContext(), 20 ), getDIP( getContext(), 15 ) );
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            setMeasuredDimension(getDIP(getContext(), 20), getDIP(getContext(), 15));
         }
 
         @Override
-        public void onDraw( Canvas canvas ) {
-            canvas.drawPath( path, paint );
-            super.onDraw( canvas );
+        public void onDraw(Canvas canvas) {
+            canvas.drawPath(path, paint);
+            super.onDraw(canvas);
         }
     }
 

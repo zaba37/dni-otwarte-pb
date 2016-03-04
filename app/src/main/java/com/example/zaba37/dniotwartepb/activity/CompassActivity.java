@@ -74,30 +74,10 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         if (extras != null) {
             targetLatitude = extras.getDouble("LATITUDE");
             targetLongtitude = extras.getDouble("LONGTITUDE");
-            switch ((int)extras.getDouble("ID")){
-                case 1:
-                    name.setText("Wydział Informatyki");
-                    break;
-                case 2:
-                    name.setText("Wydział Mechaniczny");
-                    break;
-                case 3:
-                    name.setText("Wydział Elektryczny");
-                    break;
-                case 4:
-                    name.setText("Wydział Budownictwa");
-                    break;
-                case 5:
-                    name.setText("INNO-EKO-TECH");
-                    break;
-                case 6:
-                    name.setText( "Centrum Nowoczesnego Kształcenia" );
-                    break;
-            }
-        }
-        else{
-            targetLongtitude = 23.174905; //lokalizacja przy moim bloku, do testowania
-            targetLatitude = 53.137167;
+            name.setText(extras.getString("TITLE"));
+        } else {
+            targetLongtitude = 0;
+            targetLatitude = 0;  //TODO obsluzyc
         }
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         targetLocation = new Location("dummyprovider");
