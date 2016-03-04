@@ -9,7 +9,10 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="localization_navigation_menu">Lokalizacja</string>
     <string name="scaner_navigation_menu">Skaner</string>
-    <string name="home_page_navigation_menu">Strona główna</string>
+    <string name="home_page_navigation_menu">MAPA WYDARZEŃ</string>
+    <string name="first_navigation_menu">1.	Energia Wiosny!</string>
+    <string name="second_navigation_menu">2. Kim jest Pan Murek?</string>
+    <string name="third_navigation_menu">3. Więcej wydarzeń</string>
 
     <string name="title_activity_scanner">ScannerActivity</string>
     <string name="google_api_key">AIzaSyBBIpBpwCpkctVGeOmxI9Bo4D6bR-iya8U</string>

@@ -52,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         navigationDataList.add(new DrawerItem(getString(R.string.main_screen_title), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.HOME_PAGE_TAG));
-        navigationDataList.add(new DrawerItem(getString(R.string.localization_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.LOCALIZATION_TAG));
-        navigationDataList.add(new DrawerItem(getString(R.string.scaner_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.SCANER_TAG));
+        navigationDataList.add(new DrawerItem(getString(R.string.first_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.FIRST_TAG));
+        navigationDataList.add(new DrawerItem(getString(R.string.second_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.SECOND_TAG));
+        navigationDataList.add(new DrawerItem(getString(R.string.third_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.THIRD_TAG));
 
         drawerAdapter = new DrawerAdapter(this, R.layout.drawer_row, navigationDataList);
         mDrawerList.setAdapter(drawerAdapter);

@@ -40,7 +40,7 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
         drawerHolder.icon = (ImageView) view.findViewById(R.id.drawerIcon);
 
         DrawerItem dItem = this.drawerItemList.get(position);
-        drawerHolder.icon.setImageDrawable(dItem.getImgRes());
+       // drawerHolder.icon.setImageDrawable(dItem.getImgRes());
         drawerHolder.itemName.setText(dItem.getItemName());
 
         return view;
