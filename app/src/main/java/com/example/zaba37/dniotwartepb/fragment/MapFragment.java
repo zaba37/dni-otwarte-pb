@@ -55,12 +55,13 @@ public class MapFragment extends Fragment {
         ImageView iet = new ImageView(getActivity());
         ImageView cnk = new ImageView(getActivity());
 
-        wi.setTag(new double[]{337, 230});
-        wm.setTag(new double[]{266, 170});
-        we.setTag(new double[]{229, 136});
-        wb.setTag(new double[]{187, 118});
-        iet.setTag(new double[]{221, 104});
-        cnk.setTag(new double[]{67, 40});
+        //[]{x,y,latitude,longtidude,index}
+        wi.setTag(new double[]{337, 230, 53.117228, 23.146783, 1});
+        wm.setTag(new double[]{266, 170, 53.117646, 23.148751, 2});
+        we.setTag(new double[]{229, 136, 53.117843, 23.149669, 3});
+        wb.setTag(new double[]{187, 118, 53.118367, 23.152217, 4});
+        iet.setTag(new double[]{221, 104, 53.117466, 23.152120, 5});
+        cnk.setTag(new double[]{67, 40, 53.118905, 23.154169, 6});
 
         wi.setImageResource(R.drawable.map_marker_normal);
         wm.setImageResource(R.drawable.map_marker_normal);
@@ -140,13 +141,33 @@ public class MapFragment extends Fragment {
             // lets center the screen to that coordinate
             tileView.slideToAndCenter( position[0], position[1] );
             // create a simple callout
-            MarkerDialog callout = new MarkerDialog( view.getContext() );
+            MarkerDialog callout = new MarkerDialog( view.getContext(), position );
             // add it to the view tree at the same position and offset as the marker that invoked it
             tileView.addCallout( callout, position[0], position[1], -0.5f, -1.0f );
             // a little sugar
             callout.transitionIn();
             // stub out some text
-            callout.setTitle( "Wydział Infomatyczny" );
+            switch ((int)position[4]){
+                case 1:
+                    callout.setTitle( "Wydział Infomatyczny" );
+                    break;
+                case 2:
+                    callout.setTitle( "Wydział Mechaniczny" );
+                    break;
+                case 3:
+                    callout.setTitle( "Wydział Elektryczny" );
+                    break;
+                case 4:
+                    callout.setTitle( "Wydział Budownictwa" );
+                    break;
+                case 5:
+                    callout.setTitle( "INNO-EKO-TECH" );
+                    break;
+                case 6:
+                    callout.setTitle( "Centrum Nowoczesnego Kształcenia" );
+                    break;
+            }
+
 //            callout.setSubtitle( "Info window at coordinate:\n" + position[1] + ", " + position[0] );
         }
     };

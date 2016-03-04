@@ -31,14 +31,18 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
 
     private TextView title;
     private TextView subtitle;
+    private double[] tag;
+
 
     private static int getDIP( Context context, int pixels ) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, context.getResources().getDisplayMetrics());
     }
 
-    public MarkerDialog( Context context ) {
+    public MarkerDialog( Context context, double[] tag ) {
 
         super( context );
+
+        this.tag = tag;
 
         // children
         LinearLayout bubble = new LinearLayout( context );
@@ -150,7 +154,12 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()){
             case 3:
-                getContext().startActivity(new Intent(getContext(), CompassActivity.class));
+                //[]{x,y,latitude,longtidude,index}
+                Intent intent = new Intent(getContext(), CompassActivity.class);
+                intent.putExtra("LATITUDE",tag[2]);
+                intent.putExtra("LONGTITUDE",tag[3]);
+                intent.putExtra("ID",tag[4]);
+                getContext().startActivity(intent);
                 break;
             case 4:
                 getContext().startActivity(new Intent(getContext(), ShowEventsActivity.class));

@@ -34,6 +34,7 @@ import com.example.zaba37.dniotwartepb.R;
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
 
     private TextView distance;
+    private TextView name;
     private ImageView imgCompass;
     private float currentDegree;
     private SensorManager sensorManager;
@@ -49,6 +50,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //targetLatitude = 53.136975; PIZZERIA
         //targetLongtitude = 23.175302;
         //53.117562, 23.142329 SPOLEM
@@ -63,11 +65,40 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         //53.117234, 23.146783 WI
         //KRASZ 53.137167, 23.174905
         currentDegree = 0f;
-        targetLongtitude = 23.174905; //lokalizacja przy moim bloku, do testowania
-        targetLatitude = 53.137167;
+
         setContentView(R.layout.compass);
         imgCompass = (ImageView) findViewById(R.id.imgCompass);
         distance = (TextView) findViewById(R.id.distance);
+        name = (TextView) findViewById(R.id.txtTarget);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            targetLatitude = extras.getDouble("LATITUDE");
+            targetLongtitude = extras.getDouble("LONGTITUDE");
+            switch ((int)extras.getDouble("ID")){
+                case 1:
+                    name.setText("Wydział Informatyki");
+                    break;
+                case 2:
+                    name.setText("Wydział Mechaniczny");
+                    break;
+                case 3:
+                    name.setText("Wydział Elektryczny");
+                    break;
+                case 4:
+                    name.setText("Wydział Budownictwa");
+                    break;
+                case 5:
+                    name.setText("INNO-EKO-TECH");
+                    break;
+                case 6:
+                    name.setText( "Centrum Nowoczesnego Kształcenia" );
+                    break;
+            }
+        }
+        else{
+            targetLongtitude = 23.174905; //lokalizacja przy moim bloku, do testowania
+            targetLatitude = 53.137167;
+        }
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         targetLocation = new Location("dummyprovider");
         targetLocation.setLatitude(targetLatitude);
