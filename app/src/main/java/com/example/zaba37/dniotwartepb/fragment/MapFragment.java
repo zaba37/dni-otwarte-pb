@@ -32,7 +32,7 @@ public class MapFragment extends Fragment {
         frame = (FrameLayout) view.findViewById(R.id.frameMap);
 
         tileView = new TileView(getActivity());
-        tileView.setSize(3560, 2993);
+        tileView.setSize(2018, 1499);
 
         tileView.setBackgroundColor(0xFFe7e7e7);
 
@@ -48,13 +48,15 @@ public class MapFragment extends Fragment {
         tileView.setScaleLimits(0, 4);
 
         ImageView marker = new ImageView( getActivity() );
-        marker.setTag(new double[] {0.3, 0.3});
+        marker.setTag(new double[]{0.3, 0.3});
         marker.setImageResource(R.drawable.map_marker_normal);
-        tileView.getMarkerLayout().setMarkerTapListener( markerTapListener );
-        tileView.addMarker( marker, 0.3, 0.3, null, null );
+        tileView.getMarkerLayout().setMarkerTapListener(markerTapListener);
+        tileView.addMarker(marker, 0.3, 0.3, null, null);
         frame.addView(tileView);
 
-        frameTo(0.5,0.5);
+        frameTo(0.5, 0.5);
+
+        tileView.setViewportPadding(500);
 
         return view;
     }
