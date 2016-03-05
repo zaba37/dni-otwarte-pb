@@ -18,7 +18,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_margin="8dp"
-            android:text="Wydział Informatycznym"
+            android:text="Wydział Zarządzania"
             android:textSize="26sp" />
 
         <TextView
@@ -26,8 +26,33 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:text="CNK ul. Zwierzyniecka 16"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textStyle="bold|italic"
+            android:text="Zobacz, jak działa drukarka modeli 3D i jak programuje się roboty mobilne Lego"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
             android:layout_margin="8dp"
-            android:text="Gprzy wejściu odwiedź stoisko informacyjne"
+            android:text="Godz. 10.00 - 14.00"
             android:textSize="20sp" />
 
         <View
@@ -44,7 +69,7 @@
             android:textSize="24sp"
             android:textColor="@color/black"
             android:textStyle="bold|italic"
-            android:text="Zaszalej z systemem dwójkowym"
+            android:text="Bądź fit na wiosnę! ćwicz razem z grupą dr Jolanty Zuzdy"
             android:gravity="center"/>
 
         <TextView
@@ -53,85 +78,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_margin="8dp"
-            android:text="Godz. 10.00 - 12.00\nblok A / parter, przy szatni\nstoisko informacyjno-organizacyjne"
-            android:textSize="20sp"/>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/black"
-            android:textColor="@color/black"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:textStyle="bold|italic"
-            android:text="Matematyczny bufet"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_margin="8dp"
-            android:textColor="@color/black"
-            android:text="Godz. 10.00 - 13.00\nblok C / parter, sala 3C "
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:textColor="@color/black"
-            android:background="@color/black"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:textStyle="bold|italic"
-            android:text="Walki robotów"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_margin="8dp"
-            android:text="Godz. 10.00 - 13.00\nblok A / niski parter przy bufecie, sala 05\nLaboratorium Autonomicznych Urządzeń Mobilnych"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/black"
-            android:textColor="@color/black"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:textStyle="bold|italic"
-            android:text="Wirtualne rozrywki (Oculus, stolik multimedialny, X-box Kinect)"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_margin="8dp"
-            android:text="Godz. 10.00 - 13.00\nblok A / piętro II, sala 218"
+            android:text="Godz. 13:30"
             android:textSize="20sp" />
 
         <View
