@@ -46,43 +46,65 @@ public class MapFragment extends Fragment {
         tileView.addDetailLevel(1.0000f, "map/1000/tile-%d_%d.png");
 
         //tileView.defineBounds(0, 0, 1, 1);
-        tileView.defineBounds(0, 0, 445, 374);
+        tileView.defineBounds(0, 0, 2018, 1499);
         //tileView.defineBounds(0,0,2018,1499);
         tileView.setMarkerAnchorPoints(-0.5f, -0.5f);
         tileView.setScale(0.0f);
 
         tileView.setScaleLimits(0, 4);
 
+        ImageView cr = new ImageView(getActivity());
         ImageView wi = new ImageView(getActivity());
         ImageView wm = new ImageView(getActivity());
         ImageView we = new ImageView(getActivity());
         ImageView wb = new ImageView(getActivity());
         ImageView iet = new ImageView(getActivity());
-        ImageView cnk = new ImageView(getActivity());
+        //ImageView cnk = new ImageView(getActivity());
+        ImageView ew = new ImageView(getActivity());
+        ImageView wa = new ImageView(getActivity());
+        ImageView wz = new ImageView(getActivity());
+        ImageView zwl = new ImageView(getActivity());
 
         //[]{x,y,latitude,longtidude,index}
-        wi.setTag(new MarkerDetails(337, 230, 53.117228, 23.146783, "Wydział Informatyczny", Constants.INFORMATYKI_EVENT));
-        wm.setTag(new MarkerDetails(266, 170, 53.117646, 23.148751, "Wydział Mechaniczny", Constants.MECHANICZNY_EVENT));
-        we.setTag(new MarkerDetails(229, 136, 53.117843, 23.149669, "Wydział Elektryczny", Constants.ELEKTRYCZNY_EVENT));
-        wb.setTag(new MarkerDetails(187, 118, 53.118367, 23.152217, "Wydział Budownictwa i Inżynierii Środowiska", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
-        iet.setTag(new MarkerDetails(221, 104, 53.117466, 23.152120, "Inno Eko Tech", Constants.ENERGIA_WIOSNY_EVENT));
-        cnk.setTag(new MarkerDetails(67, 40, 53.118905, 23.154169, "Centrum Nowoczesnego Kształcenia", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
 
-        wi.setImageResource(R.drawable.marker1);
-        wm.setImageResource(R.drawable.marker2);
-        we.setImageResource(R.drawable.marker3);
-        wb.setImageResource(R.drawable.marker4);
-        iet.setImageResource(R.drawable.marker5);
-        cnk.setImageResource(R.drawable.marker6);
+        //CNK1 330 224
+        //CNK2 370 224
+        //CNK3 410 224
+        //CNK4 450 224
+        cr.setTag(new MarkerDetails(1530, 988, Constants.WI_LAT, Constants.WI_LONG, "Centrum Rekrutacji, Studiów Podyplomowych i Szkoleń", Constants.CENTRUM_REKTURTACJI_EVENT));
+        wi.setTag(new MarkerDetails(1386, 878, Constants.WI_LAT, Constants.WI_LONG, "Wydział Informatyki", Constants.INFORMATYKI_EVENT));
+        wm.setTag(new MarkerDetails(1195, 705, Constants.WM_LAT, Constants.WM_LONG, "Wydział Mechaniczny", Constants.MECHANICZNY_EVENT));
+        we.setTag(new MarkerDetails(1000, 553, Constants.WE_LAT, Constants.WE_LONG, "Wydział Elektryczny", Constants.ELEKTRYCZNY_EVENT));
+        wb.setTag(new MarkerDetails(770, 355, Constants.WB_LAT, Constants.WB_LONG, "Wydział Budownictwa i Inżynierii Środowiska", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
+        //iet.setTag(new MarkerDetails(973, 352, Constants.WB_LAT, Constants.WB_LONG, "Inno Eko Tech", Constants.ENERGIA_WIOSNY_EVENT));
+        ew.setTag(new MarkerDetails(330, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Energia Wiosny!", Constants.ENERGIA_WIOSNY_EVENT));
+        wa.setTag(new MarkerDetails(370, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Architektury", Constants.ARCHITEKTURY_EVENT));
+        wz.setTag(new MarkerDetails(410, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Zarządzania", Constants.ZARZADZANIA_EVENT));
+        zwl.setTag(new MarkerDetails(450, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Zamiejscowy Wydział Leśny", Constants.LESNY_EVENT));
+
+        cr.setImageResource(R.drawable.custom_marker_1);
+        wi.setImageResource(R.drawable.custom_marker_2);
+        wm.setImageResource(R.drawable.custom_marker_3);
+        we.setImageResource(R.drawable.custom_marker_4);
+        wb.setImageResource(R.drawable.custom_marker_5);
+        //iet.setImageResource(R.drawable.custom_marker_5);
+        ew.setImageResource(R.drawable.custom_marker_6);
+        wa.setImageResource(R.drawable.custom_marker_7);
+        wz.setImageResource(R.drawable.custom_marker_8);
+        zwl.setImageResource(R.drawable.custom_marker_9);
 
         tileView.getMarkerLayout().setMarkerTapListener(markerTapListener);
 
-        tileView.addMarker(wi, 337, 230, null, null);
-        tileView.addMarker(wm, 266, 170, null, null);
-        tileView.addMarker(we, 229, 136, null, null);
-        tileView.addMarker(wb, 187, 118, null, null);
-        tileView.addMarker(iet, 221, 104, null, null);
-        tileView.addMarker(cnk, 67, 40, null, null);
+        tileView.addMarker(cr, 1530, 988, null, null);
+        tileView.addMarker(wi, 1386, 878, null, null);
+        tileView.addMarker(wm, 1195, 705, null, null);
+        tileView.addMarker(we, 1000, 553, null, null);
+        tileView.addMarker(wb, 770, 355, null, null);
+        //tileView.addMarker(iet, 973, 352, null, null);
+        tileView.addMarker(ew, 330, 224, null, null);
+        tileView.addMarker(wa, 370, 224, null, null);
+        tileView.addMarker(wz, 410, 224, null, null);
+        tileView.addMarker(zwl, 450, 224, null, null);
 
 
         tileView.setViewportPadding(1000);

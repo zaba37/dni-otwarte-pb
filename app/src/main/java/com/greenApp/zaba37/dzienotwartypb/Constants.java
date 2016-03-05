@@ -21,4 +21,19 @@ public final class Constants {
     public static final String MECHANICZNY_EVENT = "MECHANICZNY_EVENT";
     public static final String ZARZADZANIA_EVENT = "ZARZADZANIA_EVENT";
     public static final String CENTRUM_REKTURTACJI_EVENT = "CENTRUM_REKTURTACJI_EVENT";
+
+    public static final double WI_LAT = 53.117228;
+    public static final double WI_LONG = 23.146783;
+
+    public static final double WM_LAT = 53.117646;
+    public static final double WM_LONG = 23.148751;
+
+    public static final double WE_LAT = 53.117843;
+    public static final double WE_LONG = 23.149669;
+
+    public static final double WB_LAT = 53.118367;
+    public static final double WB_LONG = 23.152217;
+
+    public static final double CNK_LAT = 53.118905;
+    public static final double CNK_LONG = 23.154169;
 }
