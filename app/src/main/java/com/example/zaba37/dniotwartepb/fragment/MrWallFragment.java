@@ -26,7 +26,7 @@ public class MrWallFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wall, container, false);
         WebView wvWall = (WebView) view.findViewById(R.id.wvWall);
-        wvWall.loadUrl("file:///android_asset/mur.html");
+        wvWall.loadUrl("file:///android_asset/murek.html");
         return view;
     }
 }
