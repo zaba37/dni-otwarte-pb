@@ -3,14 +3,10 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
-        android:layout_margin="8dp"
-        android:textColor="@color/colorPrimary"
-        android:text="Aplikację stworzyli studenci wydziału informatyki Politechniki Białostockiej"/>
+        android:id="@+id/wvMoreEvents">
 
+    </WebView>
 </LinearLayout>

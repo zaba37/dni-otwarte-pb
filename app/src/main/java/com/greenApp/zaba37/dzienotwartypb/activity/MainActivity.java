@@ -23,6 +23,7 @@ import com.greenApp.zaba37.dzienotwartypb.adapter.DrawerAdapter;
 import com.greenApp.zaba37.dzienotwartypb.event.OnFragmentLaunchingEvent;
 import com.greenApp.zaba37.dzienotwartypb.fragment.AboutFragment;
 import com.greenApp.zaba37.dzienotwartypb.fragment.MapFragment;
+import com.greenApp.zaba37.dzienotwartypb.fragment.MoreEventsFragment;
 import com.greenApp.zaba37.dzienotwartypb.fragment.MrWallFragment;
 import com.greenApp.zaba37.dzienotwartypb.fragment.PowerFragment;
 import com.greenApp.zaba37.dzienotwartypb.model.DrawerItem;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private MrWallFragment mrWallFragment;
     private PowerFragment powerFragment;
     private AboutFragment aboutFragment;
+    private MoreEventsFragment moreEventsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +194,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 mapFragment = null;
                 fm.beginTransaction().replace(R.id.fragmentContainer, mrWallFragment).commit();
+                drawerLayout.closeDrawers();
+                break;
+            case Constants.THIRD_TAG:
+                getSupportActionBar().setTitle("" + name);
+                if (moreEventsFragment == null) {
+                    moreEventsFragment = new MoreEventsFragment();
+                }
+                mapFragment = null;
+                fm.beginTransaction().replace(R.id.fragmentContainer, moreEventsFragment).commit();
                 drawerLayout.closeDrawers();
                 break;
             case Constants.ABOUT_TAG:

@@ -9,6 +9,7 @@ public final class Constants {
     public static final String SECOND_TAG = "second";
     public static final String THIRD_TAG = "third";
     public static final String ABOUT_TAG = "about";
+    public static final String MORE_EVENT_TAG = "more";
 
     //EVENTS
     public static final String INFORMATYKI_EVENT = "INFORMATYKI_EVENT";
