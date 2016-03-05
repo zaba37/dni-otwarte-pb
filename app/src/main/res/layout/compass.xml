@@ -3,49 +3,50 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/compass_view_backgroud">
+
 
     <TextView
         android:id="@+id/txtTarget"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="Wydział Informatyki"
         android:textAlignment="center"
-        android:textSize="40sp" />
-
-    <ImageView
-        android:id="@+id/tlo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@drawable/tlo" />
-
-    <ImageView
-        android:id="@+id/imgCompass"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:interpolator="@android:anim/linear_interpolator"
-        android:src="@drawable/wskazowki" />
-
-    <ImageView
-        android:id="@+id/waiting"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="40sp"
-        android:src="@drawable/napis"
-        android:visibility="invisible" />
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/distance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/imgCompass"
         android:layout_alignParentBottom="true"
         android:textAlignment="center"
-        android:textColor="@color/pbGreen"
+        android:textColor="@color/white"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/distance"
+        android:layout_below="@id/txtTarget">
+        <ImageView
+            android:id="@+id/tlo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/tlo"/>
+
+        <ImageView
+            android:id="@+id/imgCompass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:interpolator="@android:anim/linear_interpolator"
+            android:src="@drawable/wskazowki"/>
+    </RelativeLayout>
+
+
 </RelativeLayout>

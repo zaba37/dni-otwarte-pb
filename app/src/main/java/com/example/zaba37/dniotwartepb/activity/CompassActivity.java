@@ -41,6 +41,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
     private LocationManager locationManager;
     private LocationListener locationListener;
+    private GpsStatus.Listener gpsStatusListener;
     private double targetLongtitude, targetLatitude;
     private Location myLocation, targetLocation;
     private GeomagneticField geoField;
@@ -51,35 +52,22 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //targetLatitude = 53.136975; PIZZERIA
-        //targetLongtitude = 23.175302;
-        //53.117562, 23.142329 SPOLEM
-        //targetLatitude = 53.117562;
-        //targetLongtitude = 23.142329;
-        //53.115956, 23.145271 HOTEL
-        //targetLatitude = 53.115956;
-        //targetLongtitude = 23.145271;
-        //53.117856, 23.148672
-        //targetLatitude = 53.117856;
-        //targetLongtitude = 23.148672;
-        //53.117234, 23.146783 WI
-        //KRASZ 53.137167, 23.174905
-        currentDegree = 0f;
-
         setContentView(R.layout.compass);
         imgCompass = (ImageView) findViewById(R.id.imgCompass);
         distance = (TextView) findViewById(R.id.distance);
         name = (TextView) findViewById(R.id.txtTarget);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             targetLatitude = extras.getDouble("LATITUDE");
             targetLongtitude = extras.getDouble("LONGTITUDE");
             name.setText(extras.getString("TITLE"));
-        } else {
-            targetLongtitude = 0;
-            targetLatitude = 0;  //TODO obsluzyc
         }
+
+        currentDegree = 0f;
+
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
         targetLocation = new Location("dummyprovider");
         targetLocation.setLatitude(targetLatitude);
         targetLocation.setLongitude(targetLongtitude);
@@ -100,41 +88,61 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
             @Override
             public void onProviderEnabled(String provider) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.wskazowki, getApplicationContext().getTheme()));
-                } else {
-                    imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.wskazowki));
-                }
+
             }
 
             @Override
             public void onProviderDisabled(String provider) {
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.napis, getApplicationContext().getTheme()));
-                } else {
-                    imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.napis));
-                }
+
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
 
             }
         };
 
+        gpsStatusListener = new GpsStatus.Listener() {
+            @Override
+            public void onGpsStatusChanged(int event) {
+                switch (event){
+                    case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
+                        if (myLocation != null) {
+                            if ((SystemClock.elapsedRealtime() - mLastLocationMillis) < 20000) {
+                                if (!hasGPSFix)
+                                    Toast.makeText(getApplicationContext(), "Uzyskano sygnał GPS", Toast.LENGTH_LONG).show();
+                                hasGPSFix = true;
+                            } else {
+                                if (hasGPSFix)
+                                    Toast.makeText(getApplicationContext(), "Utracono sygnał GPS", Toast.LENGTH_LONG).show();
+
+                                hasGPSFix = false;
+                            }
+                        }
+                        break;
+                }
+            }
+        };
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{
                         Manifest.permission.ACCESS_FINE_LOCATION,
                         Manifest.permission.ACCESS_COARSE_LOCATION,
                         Manifest.permission.INTERNET
                 }, 10);
-
-                return;
             }
+            else{
+                locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
+                locationManager.addGpsStatusListener(gpsStatusListener);
+            }
+
         } else {
-            locationManager.requestLocationUpdates("gps", 500, 3, locationListener);
+            locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
+            locationManager.addGpsStatusListener(gpsStatusListener);
         }
-        locationManager.addGpsStatusListener(new GpsStatus.Listener() {
+        /*locationManager.addGpsStatusListener(new GpsStatus.Listener() {
             @Override
             public void onGpsStatusChanged(int event) {
 
@@ -178,8 +186,9 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             }
 
 
-        });
-        locationManager.requestLocationUpdates("gps", 500, 3, locationListener);
+        });*/
+
+
 
         final ActionBar actionBar = getSupportActionBar();
 
@@ -202,7 +211,8 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         switch (requestCode) {
             case 10:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    locationManager.requestLocationUpdates("gps", 500, 3, locationListener);
+                    locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
+                    locationManager.addGpsStatusListener(gpsStatusListener);
                 }
                 return;
         }
@@ -211,8 +221,27 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     @Override
     protected void onResume() {
         super.onResume();
+
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME);
-        locationManager.requestLocationUpdates("gps", 500, 3, locationListener);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.INTERNET
+                }, 10);
+
+            }
+            else{
+                locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
+                locationManager.addGpsStatusListener(gpsStatusListener);
+            }
+        } else {
+            locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
+            locationManager.addGpsStatusListener(gpsStatusListener);
+        }
     }
 
     @Override
@@ -220,6 +249,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         super.onPause();
         sensorManager.unregisterListener(this);
         locationManager.removeUpdates(locationListener);
+        locationManager.removeGpsStatusListener(gpsStatusListener);
     }
 
     @Override

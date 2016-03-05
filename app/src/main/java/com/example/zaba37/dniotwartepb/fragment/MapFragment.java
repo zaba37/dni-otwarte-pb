@@ -68,12 +68,12 @@ public class MapFragment extends Fragment {
         iet.setTag(new MarkerDetails(221, 104, 53.117466, 23.152120, "Inno Eko Tech", Constants.ENERGIA_WIOSNY_EVENT));
         cnk.setTag(new MarkerDetails(67, 40, 53.118905, 23.154169, "Centrum Nowoczesnego Kształcenia", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
 
-        wi.setImageResource(R.drawable.map_marker_normal);
-        wm.setImageResource(R.drawable.map_marker_normal);
-        we.setImageResource(R.drawable.map_marker_normal);
-        wb.setImageResource(R.drawable.map_marker_normal);
-        iet.setImageResource(R.drawable.map_marker_normal);
-        cnk.setImageResource(R.drawable.map_marker_normal);
+        wi.setImageResource(R.drawable.marker1);
+        wm.setImageResource(R.drawable.marker2);
+        we.setImageResource(R.drawable.marker3);
+        wb.setImageResource(R.drawable.marker4);
+        iet.setImageResource(R.drawable.marker5);
+        cnk.setImageResource(R.drawable.marker6);
 
         tileView.getMarkerLayout().setMarkerTapListener(markerTapListener);
 
