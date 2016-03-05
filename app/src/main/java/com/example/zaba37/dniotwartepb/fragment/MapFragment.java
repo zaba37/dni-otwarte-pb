@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.zaba37.dniotwartepb.Constants;
 import com.example.zaba37.dniotwartepb.R;
 import com.example.zaba37.dniotwartepb.model.MarkerDetails;
 import com.example.zaba37.dniotwartepb.model.MarkerDialog;
@@ -60,12 +61,12 @@ public class MapFragment extends Fragment {
         ImageView cnk = new ImageView(getActivity());
 
         //[]{x,y,latitude,longtidude,index}
-        wi.setTag(new MarkerDetails(337, 230, 53.117228, 23.146783, "Wydział Informatyczny"));
-        wm.setTag(new MarkerDetails(266, 170, 53.117646, 23.148751, "Wydział Mechaniczny"));
-        we.setTag(new MarkerDetails(229, 136, 53.117843, 23.149669, "Wydział Elektryczny"));
-        wb.setTag(new MarkerDetails(187, 118, 53.118367, 23.152217, "Wydział Budownictwa i Inżynierii Środowiska"));
-        iet.setTag(new MarkerDetails(221, 104, 53.117466, 23.152120, "Inno Eko Tech"));
-        cnk.setTag(new MarkerDetails(67, 40, 53.118905, 23.154169, "Centrum Nowoczesnego Kształcenia"));
+        wi.setTag(new MarkerDetails(337, 230, 53.117228, 23.146783, "Wydział Informatyczny", Constants.INFORMATYKI_EVENT));
+        wm.setTag(new MarkerDetails(266, 170, 53.117646, 23.148751, "Wydział Mechaniczny", Constants.MECHANICZNY_EVENT));
+        we.setTag(new MarkerDetails(229, 136, 53.117843, 23.149669, "Wydział Elektryczny", Constants.ELEKTRYCZNY_EVENT));
+        wb.setTag(new MarkerDetails(187, 118, 53.118367, 23.152217, "Wydział Budownictwa i Inżynierii Środowiska", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
+        iet.setTag(new MarkerDetails(221, 104, 53.117466, 23.152120, "Inno Eko Tech", Constants.ENERGIA_WIOSNY_EVENT));
+        cnk.setTag(new MarkerDetails(67, 40, 53.118905, 23.154169, "Centrum Nowoczesnego Kształcenia", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
 
         wi.setImageResource(R.drawable.map_marker_normal);
         wm.setImageResource(R.drawable.map_marker_normal);
@@ -86,7 +87,12 @@ public class MapFragment extends Fragment {
 
         tileView.setViewportPadding(1000);
         frame.addView(tileView);
+        tileView.setScale(4.0f);
+
+        frameTo(0.5, 0.5);
+
         tileView.setScale(1.0f);
+
         frameTo(0.5, 0.5);
 
         return view;

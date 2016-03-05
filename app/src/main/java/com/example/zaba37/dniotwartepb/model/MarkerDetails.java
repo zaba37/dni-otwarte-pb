@@ -10,13 +10,15 @@ public class MarkerDetails {
     private double latitude;
     private double longtitude;
     private String title;
+    private String event;
 
-    public MarkerDetails(int x, int y, double latitude, double longtitude, String title) {
+    public MarkerDetails(int x, int y, double latitude, double longtitude, String title, String event) {
         this.x = x;
         this.y = y;
         this.latitude = latitude;
         this.longtitude = longtitude;
         this.title = title;
+        this.event = event;
     }
 
     public int getX() {
@@ -57,5 +59,13 @@ public class MarkerDetails {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
     }
 }

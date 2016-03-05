@@ -37,7 +37,7 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         view = inflater.inflate(layoutResID, parent, false);
         drawerHolder.itemName = (TextView) view.findViewById(R.id.drawerItemName);
-        drawerHolder.icon = (ImageView) view.findViewById(R.id.drawerIcon);
+      //  drawerHolder.icon = (ImageView) view.findViewById(R.id.drawerIcon);
 
         DrawerItem dItem = this.drawerItemList.get(position);
        // drawerHolder.icon.setImageDrawable(dItem.getImgRes());

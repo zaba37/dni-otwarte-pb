@@ -17,6 +17,7 @@ import com.example.zaba37.dniotwartepb.Constants;
 import com.example.zaba37.dniotwartepb.R;
 import com.example.zaba37.dniotwartepb.adapter.DrawerAdapter;
 import com.example.zaba37.dniotwartepb.event.OnFragmentLaunchingEvent;
+import com.example.zaba37.dniotwartepb.fragment.AboutFragment;
 import com.example.zaba37.dniotwartepb.fragment.MapFragment;
 import com.example.zaba37.dniotwartepb.fragment.MrWallFragment;
 import com.example.zaba37.dniotwartepb.fragment.PowerFragment;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private MapFragment mapFragment;
     private MrWallFragment mrWallFragment;
     private PowerFragment powerFragment;
+    private AboutFragment aboutFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         navigationDataList.add(new DrawerItem(getString(R.string.first_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.FIRST_TAG));
         navigationDataList.add(new DrawerItem(getString(R.string.second_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.SECOND_TAG));
         navigationDataList.add(new DrawerItem(getString(R.string.third_navigation_menu), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.THIRD_TAG));
+        navigationDataList.add(new DrawerItem(getString(R.string.about_navigation_meny), getResources().getDrawable(R.drawable.ic_navigation_black_24dp), Constants.ABOUT_TAG));
 
         drawerAdapter = new DrawerAdapter(this, R.layout.drawer_row, navigationDataList);
         mDrawerList.setAdapter(drawerAdapter);
@@ -163,6 +166,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 mapFragment = null;
                 fm.beginTransaction().replace(R.id.fragmentContainer, mrWallFragment).commit();
+                drawerLayout.closeDrawers();
+                break;
+            case Constants.ABOUT_TAG:
+                getSupportActionBar().setTitle("" + name);
+                if (aboutFragment == null) {
+                    aboutFragment = new AboutFragment();
+                }
+                mapFragment = null;
+                fm.beginTransaction().replace(R.id.fragmentContainer, aboutFragment).commit();
                 drawerLayout.closeDrawers();
                 break;
             default:

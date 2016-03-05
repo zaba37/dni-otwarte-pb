@@ -17,11 +17,11 @@
         android:paddingTop="16dp">
 
 
-        <ImageView
-            android:id="@+id/drawerIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:scaleType="centerInside" />
+        <!--<ImageView-->
+            <!--android:id="@+id/drawerIcon"-->
+            <!--android:layout_width="24dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:scaleType="centerInside" />-->
 
         <TextView
             android:id="@+id/drawerItemName"

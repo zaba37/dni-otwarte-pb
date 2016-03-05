@@ -10,11 +10,11 @@ import android.webkit.WebView;
 import com.example.zaba37.dniotwartepb.R;
 
 /**
- * Created by zaba3 on 04.03.2016.
+ * Created by zaba3 on 05.03.2016.
  */
-public class MrWallFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
-    public MrWallFragment() {
+    public AboutFragment() {
     }
 
     @Override
@@ -24,9 +24,8 @@ public class MrWallFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_wall, container, false);
-        WebView wvWall = (WebView) view.findViewById(R.id.wvWall);
-        wvWall.loadUrl("file:///android_asset/mur.html");
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
+
         return view;
     }
 }

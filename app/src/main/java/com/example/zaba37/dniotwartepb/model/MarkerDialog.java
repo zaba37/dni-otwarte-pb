@@ -86,14 +86,6 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
         LinearLayout.LayoutParams titleLayout = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         labels.addView(title, titleLayout);
 
-//        subtitle = new TextView( context );
-//        subtitle.setTextColor(0xFF88afca);
-//        subtitle.setTypeface(Typeface.SANS_SERIF);
-//        subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-//        subtitle.setMaxWidth(maxWidth);
-//        LinearLayout.LayoutParams subtitleLayout = new LinearLayout.LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
-//        labels.addView(subtitle, subtitleLayout);
-
         RelativeLayout iconColumn = new RelativeLayout(context);
         LayoutParams iconColumnLayout = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         bubble.addView(iconColumn, iconColumnLayout);
@@ -162,7 +154,9 @@ public class MarkerDialog extends RelativeLayout implements View.OnClickListener
                 getContext().startActivity(intent);
                 break;
             case 4:
-                getContext().startActivity(new Intent(getContext(), ShowEventsActivity.class));
+                Intent intentEvent = new Intent(getContext(), ShowEventsActivity.class);
+                intentEvent.putExtra("EVENT", markerDetails.getEvent());
+                getContext().startActivity(intentEvent);
                 break;
         }
     }

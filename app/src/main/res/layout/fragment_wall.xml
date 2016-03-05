@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/wvWall">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Kim jest Pan Murek?"
-            android:textSize="28sp"
-            android:gravity="center"
-            android:layout_margin="8dp"
-            android:textStyle="bold|italic"/>
+    </WebView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2">
+</LinearLayout>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textStyle="italic"
-                android:text="Pan Murek stoi murem za studentami Politechniki Białostockiej. Jest ich inspiracją i wsparciem. Zbierał pieniądze w akcji Politechnika Dzieciom i Wielkiej Orkiestrze Świątecznej Pomocy. A teraz został przewodnikiem po Politechnice."
-                android:textSize="24sp" />
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:src="@drawable/pan_murek" />
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Kim jest Pan Murek?"-->
+            <!--android:textSize="28sp"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_margin="8dp"-->
+            <!--android:textStyle="bold|italic"/>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:weightSum="2">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="8dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:textStyle="italic"-->
+                <!--android:text="Pan Murek stoi murem za studentami Politechniki Białostockiej. Jest ich inspiracją i wsparciem. Zbierał pieniądze w akcji Politechnika Dzieciom i Wielkiej Orkiestrze Świątecznej Pomocy. A teraz został przewodnikiem po Politechnice."-->
+                <!--android:textSize="24sp" />-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:src="@drawable/pan_murek" />-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+<!--</ScrollView>-->
