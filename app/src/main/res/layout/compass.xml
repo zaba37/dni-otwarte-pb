@@ -46,6 +46,15 @@
             android:layout_centerInParent="true"
             android:interpolator="@android:anim/linear_interpolator"
             android:src="@drawable/wskazowki"/>
+
+        <ImageView
+            android:id="@+id/waiting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/napis"
+            android:visibility="visible"/>
+
     </RelativeLayout>
 
 
