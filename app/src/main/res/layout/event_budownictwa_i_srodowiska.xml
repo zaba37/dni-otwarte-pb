@@ -2,8 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/white"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.zaba37.dniotwartepb.activity.ShowEventsActivity">
 
@@ -15,10 +15,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:textColor="@color/black"
+            android:gravity="center"
             android:layout_margin="8dp"
-            android:text="Wydział Informatycznym"
+            android:text="Wydział Budownictwa i Inżynierii Środowiska"
             android:textSize="26sp" />
 
         <TextView
@@ -27,7 +27,33 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_margin="8dp"
-            android:text="Gprzy wejściu odwiedź stoisko informacyjne"
+            android:text="Przy wejściu odwiedź stoisko informacyjne i zobacz prezentacje studenckich kół naukowych: Konstruktor, młodych PZiTS oraz Genofor, czyli Biotechnologii."
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textStyle="bold|italic"
+            android:text="Wizualizacja wietrzenia, eksperyment"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_margin="8dp"
+            android:text="Godz. 10.00 - 12.00\nblok A / I piętro, sala 137"
             android:textSize="20sp" />
 
         <View
@@ -44,7 +70,7 @@
             android:textSize="24sp"
             android:textColor="@color/black"
             android:textStyle="bold|italic"
-            android:text="Zaszalej z systemem dwójkowym"
+            android:text="Prezentacja rotorów wiatrowych"
             android:gravity="center"/>
 
         <TextView
@@ -53,14 +79,13 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_margin="8dp"
-            android:text="Godz. 10.00 - 12.00\nblok A / parter, przy szatni\nstoisko informacyjno-organizacyjne"
-            android:textSize="20sp"/>
+            android:text="Godz. 10.00 - 12.00\nbudynek Inno-Eko-Tech, blok C / parter, sala 1/12\nLaboratorium Systemów Odnawialnych Źródeł Energii"
+            android:textSize="20sp" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/black"
-            android:textColor="@color/black"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"/>
 
@@ -68,18 +93,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:textColor="@color/black"
             android:textStyle="bold|italic"
-            android:text="Matematyczny bufet"
+            android:textColor="@color/black"
+            android:text="Prezentacja sprzętu niezbędnego do przeprowadzenia procesu izolacji, wizualizacji oraz określenia wielkości DNA, RNA i białek"
             android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_margin="8dp"
             android:textColor="@color/black"
-            android:text="Godz. 10.00 - 13.00\nblok C / parter, sala 3C "
+            android:layout_margin="8dp"
+            android:text="Godz. 10.00 - 12.00\nbudynek Inno-Eko-Tech, blok C / I piętro, sala 2/11 "
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            android:text="Sztuczna rzeka - wizualizacja przepływu w kanale otwartym"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_margin="8dp"
+            android:text="Godz. 12.00 - 14.00\nbudynek Inno-Eko-Tech, blok C / parter, sala 1/13\n Laboratorium Mechaniki Płynów i Techniki Cieplnej"
             android:textSize="20sp" />
 
         <View
@@ -96,7 +148,7 @@
             android:textSize="24sp"
             android:textColor="@color/black"
             android:textStyle="bold|italic"
-            android:text="Walki robotów"
+            android:text="Prezentacja Laboratorium instalacji cieplnych"
             android:gravity="center"/>
 
         <TextView
@@ -105,40 +157,14 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_margin="8dp"
-            android:text="Godz. 10.00 - 13.00\nblok A / niski parter przy bufecie, sala 05\nLaboratorium Autonomicznych Urządzeń Mobilnych"
+            android:text="Godz. 11.00 - 13.00\nbudynek Inno-Eko-Tech, blok C / parter, sala 1/14"
             android:textSize="20sp" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
+            android:textColor="@color/black"
             android:background="@color/black"
-            android:textColor="@color/black"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:textStyle="bold|italic"
-            android:text="Wirtualne rozrywki (Oculus, stolik multimedialny, X-box Kinect)"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_margin="8dp"
-            android:text="Godz. 10.00 - 13.00\nblok A / piętro II, sala 218"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/black"
-            android:textColor="@color/black"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"/>
 
