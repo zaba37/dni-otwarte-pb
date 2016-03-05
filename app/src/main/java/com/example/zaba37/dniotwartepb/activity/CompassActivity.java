@@ -36,6 +36,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private TextView distance;
     private TextView name;
     private ImageView imgCompass;
+    private ImageView imgWaiting;
     private float currentDegree;
     private SensorManager sensorManager;
 
@@ -54,6 +55,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
         setContentView(R.layout.compass);
         imgCompass = (ImageView) findViewById(R.id.imgCompass);
+        imgWaiting = (ImageView) findViewById(R.id.waiting);
         distance = (TextView) findViewById(R.id.distance);
         name = (TextView) findViewById(R.id.txtTarget);
 
@@ -110,11 +112,12 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                             if ((SystemClock.elapsedRealtime() - mLastLocationMillis) < 20000) {
                                 if (!hasGPSFix)
                                     Toast.makeText(getApplicationContext(), "Uzyskano sygnał GPS", Toast.LENGTH_LONG).show();
+                                imgWaiting.setVisibility(4);
                                 hasGPSFix = true;
                             } else {
                                 if (hasGPSFix)
                                     Toast.makeText(getApplicationContext(), "Utracono sygnał GPS", Toast.LENGTH_LONG).show();
-
+                                imgWaiting.setVisibility(1);
                                 hasGPSFix = false;
                             }
                         }
@@ -254,27 +257,29 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (myLocation != null) {
-            geoField = new GeomagneticField(
-                    Double.valueOf(myLocation.getLatitude()).floatValue(),
-                    Double.valueOf(myLocation.getLongitude()).floatValue(),
-                    Double.valueOf(myLocation.getAltitude()).floatValue(),
-                    System.currentTimeMillis()
-            );
+            if (myLocation != null && hasGPSFix) {
 
-            float degree = event.values[0];
-            degree += geoField.getDeclination();
-            float bearing = myLocation.bearingTo(targetLocation);
-            float direction = degree - bearing;
+                geoField = new GeomagneticField(
+                        Double.valueOf(myLocation.getLatitude()).floatValue(),
+                        Double.valueOf(myLocation.getLongitude()).floatValue(),
+                        Double.valueOf(myLocation.getAltitude()).floatValue(),
+                        System.currentTimeMillis()
+                );
 
-            distance.setText(((int) myLocation.distanceTo(targetLocation)) + " m");
-            RotateAnimation ra = new RotateAnimation(currentDegree, -direction, Animation.RELATIVE_TO_SELF, 0.5f,
-                    Animation.RELATIVE_TO_SELF, 0.5f);
-            ra.setDuration(120);
-            ra.setFillAfter(true);
-            imgCompass.startAnimation(ra);
-            currentDegree = -direction;
-        }
+                float degree = event.values[0];
+                degree += geoField.getDeclination();
+                float bearing = myLocation.bearingTo(targetLocation);
+                float direction = degree - bearing;
+
+                distance.setText(((int) myLocation.distanceTo(targetLocation)) + " m");
+                RotateAnimation ra = new RotateAnimation(currentDegree, -direction, Animation.RELATIVE_TO_SELF, 0.5f,
+                        Animation.RELATIVE_TO_SELF, 0.5f);
+                ra.setDuration(120);
+                ra.setFillAfter(true);
+                imgCompass.startAnimation(ra);
+                currentDegree = -direction;
+            }
+
     }
 
     @Override
