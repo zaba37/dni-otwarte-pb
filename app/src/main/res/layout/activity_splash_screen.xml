@@ -14,8 +14,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:src="@drawable/hours"
+        android:layout_height="100dp"
+        android:src="@drawable/data"
         android:padding="8dp" />
 
     <LinearLayout
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:padding="16dp"
-                android:src="@drawable/energia"
+                android:src="@drawable/napis_energia_wiosny"
                 android:layout_marginBottom="28dp"/>
 
         </LinearLayout>
