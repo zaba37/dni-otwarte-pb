@@ -1,6 +1,8 @@
 package com.example.zaba37.dniotwartepb.activity;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.GeomagneticField;
@@ -40,6 +42,8 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private float currentDegree;
     private SensorManager sensorManager;
 
+    private AlertDialog.Builder alertDialogBuilder;
+    private AlertDialog alertDialog;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private GpsStatus.Listener gpsStatusListener;
@@ -74,6 +78,29 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         targetLocation.setLatitude(targetLatitude);
         targetLocation.setLongitude(targetLongtitude);
 
+        alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Lokalizacja");
+        alertDialogBuilder.setMessage("Włącz lokazlizację (GPS i sieci)");
+
+
+        alertDialogBuilder.setPositiveButton("Ustawienia", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alertDialog.dismiss();
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alertDialog.dismiss();
+                finish();
+            }
+        });
+
+        alertDialog = alertDialogBuilder.create();
+
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
 
@@ -90,16 +117,11 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
             @Override
             public void onProviderEnabled(String provider) {
-
             }
 
             @Override
             public void onProviderDisabled(String provider) {
-
-
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(intent);
-
+                alertDialog.show();
             }
         };
 
