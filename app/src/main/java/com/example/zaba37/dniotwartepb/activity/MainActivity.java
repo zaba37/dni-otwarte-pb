@@ -18,6 +18,8 @@ import com.example.zaba37.dniotwartepb.R;
 import com.example.zaba37.dniotwartepb.adapter.DrawerAdapter;
 import com.example.zaba37.dniotwartepb.event.OnFragmentLaunchingEvent;
 import com.example.zaba37.dniotwartepb.fragment.MapFragment;
+import com.example.zaba37.dniotwartepb.fragment.MrWallFragment;
+import com.example.zaba37.dniotwartepb.fragment.PowerFragment;
 import com.example.zaba37.dniotwartepb.model.DrawerItem;
 
 import org.greenrobot.eventbus.EventBus;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private List<DrawerItem> navigationDataList;
     private FragmentManager fm;
     private MapFragment mapFragment;
+    private MrWallFragment mrWallFragment;
+    private PowerFragment powerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +145,24 @@ public class MainActivity extends AppCompatActivity {
                     mapFragment = new MapFragment();
                 }
                 fm.beginTransaction().replace(R.id.fragmentContainer, mapFragment).commit();
+                drawerLayout.closeDrawers();
+                break;
+            case Constants.FIRST_TAG:
+                getSupportActionBar().setTitle("" + name);
+                if (powerFragment == null) {
+                    powerFragment = new PowerFragment();
+                }
+                mapFragment = null;
+                fm.beginTransaction().replace(R.id.fragmentContainer, powerFragment).commit();
+                drawerLayout.closeDrawers();
+                break;
+            case Constants.SECOND_TAG:
+                getSupportActionBar().setTitle("" + name);
+                if (mrWallFragment == null) {
+                    mrWallFragment = new MrWallFragment();
+                }
+                mapFragment = null;
+                fm.beginTransaction().replace(R.id.fragmentContainer, mrWallFragment).commit();
                 drawerLayout.closeDrawers();
                 break;
             default:

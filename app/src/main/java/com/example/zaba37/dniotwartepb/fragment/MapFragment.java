@@ -32,6 +32,7 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         frame = (FrameLayout) view.findViewById(R.id.frameMap);
+        frame.removeAllViews();
 
         tileView = new TileView(getActivity());
         tileView.setSize(2018, 1499);
@@ -85,7 +86,7 @@ public class MapFragment extends Fragment {
 
         tileView.setViewportPadding(1000);
         frame.addView(tileView);
-
+        tileView.setScale(1.0f);
         frameTo(0.5, 0.5);
 
         return view;
