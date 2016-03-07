@@ -80,7 +80,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
         alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Lokalizacja");
-        alertDialogBuilder.setMessage("Włącz lokazlizację (GPS i sieci)");
+        alertDialogBuilder.setMessage("Włącz lokalizację (GPS i sieci)");
 
 
         alertDialogBuilder.setPositiveButton("Ustawienia", new DialogInterface.OnClickListener() {
