@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.zaba37.dniotwartepb.activity.SplashScreenActivity">
+    tools:context="com.greenApp.zaba37.dzienotwartypb.activity.SplashScreenActivity">
 
     <ImageView
         android:layout_width="match_parent"

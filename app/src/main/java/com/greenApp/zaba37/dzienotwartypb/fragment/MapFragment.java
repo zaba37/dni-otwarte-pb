@@ -36,14 +36,20 @@ public class MapFragment extends Fragment {
         frame.removeAllViews();
 
         tileView = new TileView(getActivity());
-        tileView.setSize(2018, 1499);
+       // tileView.setSize(2018, 1499);
+        tileView.setSize(3000, 2228);
 
         tileView.setBackgroundColor(0xFFe7e7e7);
 
-        tileView.addDetailLevel(0.1250f, "map/125/tile-%d_%d.png");
-        tileView.addDetailLevel(0.2500f, "map/250/tile-%d_%d.png");
-        tileView.addDetailLevel(0.5000f, "map/500/tile-%d_%d.png");
-        tileView.addDetailLevel(1.0000f, "map/1000/tile-%d_%d.png");
+//        tileView.addDetailLevel(0.1250f, "map/125/tile-%d_%d.png");
+//        tileView.addDetailLevel(0.2500f, "map/250/tile-%d_%d.png");
+//        tileView.addDetailLevel(0.5000f, "map/500/tile-%d_%d.png");
+//        tileView.addDetailLevel(1.0000f, "map/1000/tile-%d_%d.png");
+
+        tileView.addDetailLevel(0.1250f, "map/125/%d_%d.png");
+        tileView.addDetailLevel(0.2500f, "map/250/%d_%d.png");
+        tileView.addDetailLevel(0.5000f, "map/500/%d_%d.png");
+        tileView.addDetailLevel(1.0000f, "map/1000/%d_%d.png");
 
         //tileView.defineBounds(0, 0, 1, 1);
         tileView.defineBounds(0, 0, 2018, 1499);

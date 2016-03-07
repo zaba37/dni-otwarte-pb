@@ -27,6 +27,7 @@ import com.greenApp.zaba37.dzienotwartypb.activity.ShowEventsActivity;
 /**
  * Created by zaba3 on 02.03.2016.
  */
+@SuppressWarnings("ResourceType")
 public class MarkerDialog extends RelativeLayout implements View.OnClickListener {
 
     private TextView title;

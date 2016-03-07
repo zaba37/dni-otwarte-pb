@@ -6,7 +6,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion '22.0.1'
     defaultConfig {
-        applicationId "com.example.zaba37.dniotwartepb"
+        applicationId "com.greenApp.zaba37.dzienotwartypb"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
