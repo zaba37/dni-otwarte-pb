@@ -16,7 +16,7 @@
 		h1 {
 		margin:5px;
 		text-align:center;
-		color:black;
+		
 		}
 		
 		p {
@@ -40,17 +40,22 @@
 		
 		
 		#event {
-		  border-style: solid;
-			border-width: 1px;
-		border-radius: 25px;
+		 display:block;
+
+		
 		}
 		
 		#link {
-		border-style: solid;
-			border-width: 1px 0px 0px 0px;
-		
+			
 		word-wrap:break-word;
+		background-color:white;
+        border-bottom-right-radius:25px;
+		border-bottom-left-radius:25px;
+		border-style: solid;
+		border-width: 1px 1px 1px 1px;
 		}
+		
+		
 		.upMargin{
 		margin-top:10px;
 		}
@@ -59,7 +64,40 @@
 		
 		}
 		
+		#date{
+				
+		border-top-left-radius:25px;
+		border-top-right-radius:25px;
 		
+		border-style: solid;
+		border-width: 1px 1px 0px 1px;
+		padding-bottom:1px;
+		}
+		
+		.firstBackground{
+		background-color: HotPink;
+		}
+		
+		.firstColor{
+		color: blue;
+		}
+		
+		.secondBackground{
+		background-color:black;
+		}
+		
+		.secondColor{
+		color:yellow;
+		}
+		
+		.thirdBackground{
+		background-color:LawnGreen;
+		}
+		
+		
+		.thirdColor{
+		color:white;
+		}
 	</style>
 	
 	<title>Więcej wydarzeń</title>
@@ -71,9 +109,9 @@
 	<div id="content">
 		
 		<div id="event">
-			<div id="date">			
-			<h1>7 kwietnia 2016</h1>
-			<p id="description">Dzień Otwarty tylko dla Dziewczyn </p>   
+			<div id="date" class="firstBackground" >			
+			<h1 class="firstColor" >7 kwietnia 2016</h1>
+			<p class="firstColor" id="description">Dzień Otwarty tylko dla Dziewczyn </p>   
 			</div>
 			
 			
@@ -87,9 +125,9 @@
       
 		
 		<div id="event" class="upMargin">
-			<div id="date">			
-			<h1>5-7 maja 2016</h1>
-			<p id="description">Juwenalia</p>
+			<div id="date" class="secondBackground">			
+			<h1 class="secondColor">5-7 maja 2016</h1>
+			<p class="secondColor" id="description">Juwenalia</p>
 			</div>
 			
 			
@@ -104,9 +142,9 @@
 		
 		
 		<div id="event" class="upMargin">
-			<div id="date">			
-			<h1>25 maja 2016</h1>
-			<p id="description">Dzień Politechniki Białostockiej podczas XIV Podlaskiego Festiwalu Nauki i Sztuki </p>
+			<div id="date" class="thirdBackground">			
+			<h1 class="thirdColor">25 maja 2016</h1>
+			<p class="thirdColor" id="description">Dzień Politechniki Białostockiej podczas XIV Podlaskiego Festiwalu Nauki i Sztuki </p>
 			</div>
 			
 			
