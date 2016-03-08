@@ -52,10 +52,13 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private GeomagneticField geoField;
     private boolean hasGPSFix;
     private long mLastLocationMillis;
+    private boolean isActivityJustLaunched;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        isActivityJustLaunched = true;
 
         setContentView(R.layout.compass);
         imgCompass = (ImageView) findViewById(R.id.imgCompass);
@@ -157,6 +160,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                         Manifest.permission.ACCESS_COARSE_LOCATION,
                         Manifest.permission.INTERNET
                 }, 10);
+
             }
             else{
                 locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
@@ -240,6 +244,9 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                     locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
                     locationManager.addGpsStatusListener(gpsStatusListener);
                 }
+                else {
+                    finish();
+                }
                 return;
         }
     }
@@ -248,34 +255,46 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     protected void onResume() {
         super.onResume();
 
+
+
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.INTERNET
-                }, 10);
 
-            }
-            else{
+        if(!isActivityJustLaunched){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.INTERNET
+                    }, 10);
+
+                }
+                else{
+                    locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
+                    locationManager.addGpsStatusListener(gpsStatusListener);
+                }
+            } else {
                 locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
                 locationManager.addGpsStatusListener(gpsStatusListener);
             }
-        } else {
-            locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
-            locationManager.addGpsStatusListener(gpsStatusListener);
         }
+
+
+        isActivityJustLaunched = false;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        sensorManager.unregisterListener(this);
-        locationManager.removeUpdates(locationListener);
-        locationManager.removeGpsStatusListener(gpsStatusListener);
+
+        if(!isActivityJustLaunched){
+            sensorManager.unregisterListener(this);
+            locationManager.removeUpdates(locationListener);
+            locationManager.removeGpsStatusListener(gpsStatusListener);
+        }
+
     }
 
     @Override
