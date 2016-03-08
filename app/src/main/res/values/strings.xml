@@ -3,6 +3,7 @@
     <string name="main_screen_title">Mapa wydarzeń</string>
     <string name="event_activity_title">Wydarzenia</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="tutorial_activity_name">Przewodnik</string>
 
     <!--NAVIGATION DROWER-->
     <string name="drawer_open">Open navigation drawer</string>

@@ -1,10 +1,13 @@
 package com.greenApp.zaba37.dzienotwartypb.activity;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -50,6 +53,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences getPrefs = PreferenceManager
+                        .getDefaultSharedPreferences(getBaseContext());
+
+                boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+                if (isFirstStart) {
+                    Intent i = new Intent(MainActivity.this, AppTutorial.class);
+                    startActivity(i);
+
+                    SharedPreferences.Editor e = getPrefs.edit();
+
+                    e.putBoolean("firstStart", false);
+
+                    e.apply();
+                }
+            }
+        });
+
+        // Start the thread
+        t.start();
+
         setContentView(R.layout.activity_main);
         navigationDataList = new ArrayList<>();
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
