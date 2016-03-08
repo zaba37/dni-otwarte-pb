@@ -39,7 +39,7 @@ public class MapFragment extends Fragment {
         tileView.setSize(2018, 1499);
 //        tileView.setSize(3000, 2228);
 
-        tileView.setBackgroundColor(0xFFe7e7e7);
+        tileView.setBackgroundColor(Color.WHITE);
 
         tileView.addDetailLevel(0.1250f, "map/125/tile-%d_%d.png");
         tileView.addDetailLevel(0.2500f, "map/250/tile-%d_%d.png");
