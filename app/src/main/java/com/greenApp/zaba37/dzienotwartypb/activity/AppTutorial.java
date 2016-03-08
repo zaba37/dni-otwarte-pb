@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.greenApp.zaba37.dzienotwartypb.R;
+import com.greenApp.zaba37.dzienotwartypb.fragment.TutorialFragment;
 
 /**
  * Created by Marcin on 07.03.2016.
@@ -19,29 +20,29 @@ public class AppTutorial extends AppIntro {
         setFadeAnimation();
         // Instead of fragments, you can also use our default slide
         // Just set a title, description, background and image. AppIntro will do the rest.
-        addSlide(AppIntroFragment.newInstance("Witaj na Dniu Otwartym Politechniki Białostockiej!",
+        addSlide(TutorialFragment.newInstance("Witaj na Dniu Otwartym Politechniki Białostockiej!",
                 "Ten przewodnik pokaże Ci jak korzystać z naszej aplikacji",
                 R.drawable.pan_murek,
                 Color.parseColor("#86A23C")));
 
-        addSlide(AppIntroFragment.newInstance("Interaktywna mapa kampusu",
+        addSlide(TutorialFragment.newInstance("Interaktywna mapa kampusu",
                 "Oznaczyliśmy dla Ciebie wszystkie wydarzenia, wystarczy kliknąć w marker",
                 R.drawable.tut_bg,
                 Color.parseColor("#86A23C")));
 
-        addSlide(AppIntroFragment.newInstance("Wydarzenia i nawigacja",
+        addSlide(TutorialFragment.newInstance("Wydarzenia i nawigacja",
                 "Po kliknięciu markera, możesz przejrzeć wszystkie wydarzenia odbywające się w tym miejsciu, lub wybrać opcję Prowadź, która będzie nawigowała Cię pod same drzwi wydziału",
                 R.drawable.tut_3,
                 Color.parseColor("#86A23C")));
         // OPTIONAL METHODS
         // Override bar/separator color.
 
-        addSlide(AppIntroFragment.newInstance("Więcej atrakcji",
+        addSlide(TutorialFragment.newInstance("Więcej atrakcji",
                 "Kiedy już odwiedzisz wszystkie miejsca, zajrzyj do panelu bocznego, aby dowiedzieć się więcej o Politechnice i nadchodzących wydarzeniach",
                 R.drawable.tut_4,
                 Color.parseColor("#86A23C")));
 
-        addSlide(AppIntroFragment.newInstance("Powodzenia!",
+        addSlide(TutorialFragment.newInstance("Powodzenia!",
                 "Wiesz już wszystko, możemy zaczynać!",
                 R.drawable.splash_murek,
                 Color.parseColor("#86A23C")));
