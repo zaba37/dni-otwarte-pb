@@ -16,10 +16,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_margin="8dp"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:background="@color/colorPrimary"
             android:text="Wydział Mechaniczny"
             android:textSize="26sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:text="ul. Wiejska 45C"/>
 
         <TextView
             android:layout_width="match_parent"

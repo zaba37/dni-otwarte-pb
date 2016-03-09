@@ -16,8 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_margin="8dp"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:padding="8dp"
             android:text="Centrum Rekrutacji, Studiów Podyplomowych i Szkoleń"
             android:textSize="26sp" />
 
@@ -25,10 +26,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_margin="8dp"
-            android:text="Odwiedź nasze biuro – niski parter."
-        android:textSize="20sp" />
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:text="ul. Wiejska 45A (niski parter / blok A pokój 011)"/>
 
         <View
             android:layout_width="wrap_content"
@@ -53,7 +55,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_margin="8dp"
-            android:text="Godz. 10:00 – 14:00\nblok A / pokój 011"
+            android:text="Godz. 10:00 – 14:00"
             android:textSize="20sp" />
 
         <View

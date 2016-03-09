@@ -15,11 +15,23 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
             android:gravity="center"
-            android:layout_margin="8dp"
+            android:padding="8dp"
             android:text="Wydział Budownictwa i Inżynierii Środowiska"
             android:textSize="26sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:text="ul. Wiejska 45E"/>
 
         <TextView
             android:layout_width="match_parent"
