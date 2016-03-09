@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.AppTutorial"
-            android:label="@string/tutorial_activity_name" />
+            android:label="@string/tutorial_activity_name"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.SplashScreenActivity"
             android:screenOrientation="portrait">

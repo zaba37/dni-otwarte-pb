@@ -77,16 +77,16 @@ public class MapFragment extends Fragment {
         //CNK2 370 224
         //CNK3 410 224
         //CNK4 450 224
-        cr.setTag(new MarkerDetails(1530, 988, Constants.WI_LAT, Constants.WI_LONG, "Centrum Rekrutacji, Studiów Podyplomowych i Szkoleń", Constants.CENTRUM_REKTURTACJI_EVENT));
-        wi.setTag(new MarkerDetails(1386, 878, Constants.WI_LAT, Constants.WI_LONG, "Wydział Informatyki", Constants.INFORMATYKI_EVENT));
-        wm.setTag(new MarkerDetails(1195, 705, Constants.WM_LAT, Constants.WM_LONG, "Wydział Mechaniczny", Constants.MECHANICZNY_EVENT));
-        we.setTag(new MarkerDetails(1000, 553, Constants.WE_LAT, Constants.WE_LONG, "Wydział Elektryczny", Constants.ELEKTRYCZNY_EVENT));
-        wb.setTag(new MarkerDetails(770, 355, Constants.WB_LAT, Constants.WB_LONG, "Wydział Budownictwa i Inżynierii Środowiska", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
+        cr.setTag(new MarkerDetails(1420, 960-20, Constants.WI_LAT, Constants.WI_LONG, "Centrum Rekrutacji, Studiów Podyplomowych i Szkoleń", Constants.CENTRUM_REKTURTACJI_EVENT));
+        wi.setTag(new MarkerDetails(1350, 890-20, Constants.WI_LAT, Constants.WI_LONG, "Wydział Informatyki", Constants.INFORMATYKI_EVENT));
+        wm.setTag(new MarkerDetails(1070, 660-20, Constants.WM_LAT, Constants.WM_LONG, "Wydział Mechaniczny", Constants.MECHANICZNY_EVENT));
+        we.setTag(new MarkerDetails(970, 580-20, Constants.WE_LAT, Constants.WE_LONG, "Wydział Elektryczny", Constants.ELEKTRYCZNY_EVENT));
+        wb.setTag(new MarkerDetails(640, 305-20, Constants.WB_LAT, Constants.WB_LONG, "Wydział Budownictwa i Inżynierii Środowiska", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
         //iet.setTag(new MarkerDetails(973, 352, Constants.WB_LAT, Constants.WB_LONG, "Inno Eko Tech", Constants.ENERGIA_WIOSNY_EVENT));
-        ew.setTag(new MarkerDetails(330, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Energia Wiosny!", Constants.ENERGIA_WIOSNY_EVENT));
-        wa.setTag(new MarkerDetails(370, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Architektury", Constants.ARCHITEKTURY_EVENT));
-        wz.setTag(new MarkerDetails(410, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Zarządzania", Constants.ZARZADZANIA_EVENT));
-        zwl.setTag(new MarkerDetails(450, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Zamiejscowy Wydział Leśny", Constants.LESNY_EVENT));
+        ew.setTag(new MarkerDetails(330, 224-20, Constants.CNK_LAT, Constants.CNK_LONG, "Energia Wiosny!", Constants.ENERGIA_WIOSNY_EVENT));
+        wa.setTag(new MarkerDetails(370, 224-20, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Architektury", Constants.ARCHITEKTURY_EVENT));
+        wz.setTag(new MarkerDetails(410, 224-20, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Zarządzania", Constants.ZARZADZANIA_EVENT));
+        zwl.setTag(new MarkerDetails(450, 224-20, Constants.CNK_LAT, Constants.CNK_LONG, "Zamiejscowy Wydział Leśny", Constants.LESNY_EVENT));
 
         cr.setImageResource(R.drawable.custom_marker_1);
         wi.setImageResource(R.drawable.custom_marker_2);
@@ -94,23 +94,23 @@ public class MapFragment extends Fragment {
         we.setImageResource(R.drawable.custom_marker_4);
         wb.setImageResource(R.drawable.custom_marker_5);
         //iet.setImageResource(R.drawable.custom_marker_5);
-        ew.setImageResource(R.drawable.custom_marker_6);
-        wa.setImageResource(R.drawable.custom_marker_7);
-        wz.setImageResource(R.drawable.custom_marker_8);
-        zwl.setImageResource(R.drawable.custom_marker_9);
+        ew.setImageResource(R.drawable.custom_marker_9);
+        wa.setImageResource(R.drawable.custom_marker_8);
+        wz.setImageResource(R.drawable.custom_marker_7);
+        zwl.setImageResource(R.drawable.custom_marker_6);
 
         tileView.getMarkerLayout().setMarkerTapListener(markerTapListener);
 
-        tileView.addMarker(cr, 1530, 988, null, null);
-        tileView.addMarker(wi, 1386, 878, null, null);
-        tileView.addMarker(wm, 1195, 705, null, null);
-        tileView.addMarker(we, 1000, 553, null, null);
-        tileView.addMarker(wb, 770, 355, null, null);
+        tileView.addMarker(wi, 1350, 890-20, null, null);
+        tileView.addMarker(cr, 1420, 960-20, null, null);
+        tileView.addMarker(wm, 1070, 660-20, null, null);
+        tileView.addMarker(we, 970, 580-20, null, null);
+        tileView.addMarker(wb, 640, 305-20, null, null);
         //tileView.addMarker(iet, 973, 352, null, null);
-        tileView.addMarker(ew, 330, 224, null, null);
-        tileView.addMarker(wa, 370, 224, null, null);
-        tileView.addMarker(wz, 410, 224, null, null);
-        tileView.addMarker(zwl, 450, 224, null, null);
+        tileView.addMarker(ew, 330, 224-20, null, null);
+        tileView.addMarker(wa, 370, 224-20, null, null);
+        tileView.addMarker(wz, 410, 224-20, null, null);
+        tileView.addMarker(zwl, 450, 224-20, null, null);
 
 
         tileView.setViewportPadding(1000);
