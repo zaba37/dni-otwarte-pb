@@ -131,7 +131,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         gpsStatusListener = new GpsStatus.Listener() {
             @Override
             public void onGpsStatusChanged(int event) {
-                switch (event){
+                switch (event) {
                     case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
                         if (myLocation != null) {
                             if ((SystemClock.elapsedRealtime() - mLastLocationMillis) < 20000) {
@@ -161,8 +161,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                         Manifest.permission.INTERNET
                 }, 10);
 
-            }
-            else{
+            } else {
                 locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
                 locationManager.addGpsStatusListener(gpsStatusListener);
             }
@@ -171,53 +170,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
             locationManager.addGpsStatusListener(gpsStatusListener);
         }
-        /*locationManager.addGpsStatusListener(new GpsStatus.Listener() {
-            @Override
-            public void onGpsStatusChanged(int event) {
-
-                switch (event) {
-                    case GpsStatus.GPS_EVENT_STARTED:
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.wskazowki, getApplicationContext().getTheme()));
-                        } else {
-                            imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.wskazowki));
-                        }
-                        return;
-                    case GpsStatus.GPS_EVENT_STOPPED:
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.napis, getApplicationContext().getTheme()));
-                        } else {
-                            imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.napis));
-                        }
-                        return;
-                    case GpsStatus.GPS_EVENT_FIRST_FIX:
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.wskazowki, getApplicationContext().getTheme()));
-                        } else {
-                            imgCompass.setImageDrawable(getResources().getDrawable(R.drawable.wskazowki));
-                        }
-                        return;
-                    case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
-                        if (myLocation != null) {
-                            if ((SystemClock.elapsedRealtime() - mLastLocationMillis) < 20000) {
-                                if (!hasGPSFix)
-                                    Toast.makeText(getApplicationContext(), "Uzyskano sygnał GPS", Toast.LENGTH_LONG).show();
-                                hasGPSFix = true;
-                            } else {
-                                if (hasGPSFix)
-                                    Toast.makeText(getApplicationContext(), "Utracono sygnał GPS", Toast.LENGTH_LONG).show();
-
-                                hasGPSFix = false;
-                            }
-                        }
-                        return;
-                }
-            }
-
-
-        });*/
-
-
 
         final ActionBar actionBar = getSupportActionBar();
 
@@ -243,8 +195,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
                     locationManager.addGpsStatusListener(gpsStatusListener);
-                }
-                else {
+                } else {
                     finish();
                 }
                 return;
@@ -255,12 +206,9 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     protected void onResume() {
         super.onResume();
 
-
-
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME);
 
-
-        if(!isActivityJustLaunched){
+        if (!isActivityJustLaunched) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                         && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -270,8 +218,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                             Manifest.permission.INTERNET
                     }, 10);
 
-                }
-                else{
+                } else {
                     locationManager.requestLocationUpdates("gps", 500, 1, locationListener);
                     locationManager.addGpsStatusListener(gpsStatusListener);
                 }
@@ -281,7 +228,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             }
         }
 
-
         isActivityJustLaunched = false;
     }
 
@@ -289,39 +235,37 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     protected void onPause() {
         super.onPause();
 
-        if(!isActivityJustLaunched){
+        if (!isActivityJustLaunched) {
             sensorManager.unregisterListener(this);
             locationManager.removeUpdates(locationListener);
             locationManager.removeGpsStatusListener(gpsStatusListener);
         }
-
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-            if (myLocation != null && hasGPSFix) {
+        if (myLocation != null && hasGPSFix) {
 
-                geoField = new GeomagneticField(
-                        Double.valueOf(myLocation.getLatitude()).floatValue(),
-                        Double.valueOf(myLocation.getLongitude()).floatValue(),
-                        Double.valueOf(myLocation.getAltitude()).floatValue(),
-                        System.currentTimeMillis()
-                );
+            geoField = new GeomagneticField(
+                    Double.valueOf(myLocation.getLatitude()).floatValue(),
+                    Double.valueOf(myLocation.getLongitude()).floatValue(),
+                    Double.valueOf(myLocation.getAltitude()).floatValue(),
+                    System.currentTimeMillis()
+            );
 
-                float degree = event.values[0];
-                degree += geoField.getDeclination();
-                float bearing = myLocation.bearingTo(targetLocation);
-                float direction = degree - bearing;
+            float degree = event.values[0];
+            degree += geoField.getDeclination();
+            float bearing = myLocation.bearingTo(targetLocation);
+            float direction = degree - bearing;
 
-                distance.setText(((int) myLocation.distanceTo(targetLocation)) + " m");
-                RotateAnimation ra = new RotateAnimation(currentDegree, -direction, Animation.RELATIVE_TO_SELF, 0.5f,
-                        Animation.RELATIVE_TO_SELF, 0.5f);
-                ra.setDuration(120);
-                ra.setFillAfter(true);
-                imgCompass.startAnimation(ra);
-                currentDegree = -direction;
-            }
-
+            distance.setText(((int) myLocation.distanceTo(targetLocation)) + " m");
+            RotateAnimation ra = new RotateAnimation(currentDegree, -direction, Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f);
+            ra.setDuration(120);
+            ra.setFillAfter(true);
+            imgCompass.startAnimation(ra);
+            currentDegree = -direction;
+        }
     }
 
     @Override

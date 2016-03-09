@@ -37,7 +37,6 @@ public class MapFragment extends Fragment {
 
         tileView = new TileView(getActivity());
         tileView.setSize(2018, 1499);
-//        tileView.setSize(3000, 2228);
 
         tileView.setBackgroundColor(Color.WHITE);
 
@@ -46,14 +45,7 @@ public class MapFragment extends Fragment {
         tileView.addDetailLevel(0.5000f, "map/500/tile-%d_%d.png");
         tileView.addDetailLevel(1.0000f, "map/1000/tile-%d_%d.png");
 
-//        tileView.addDetailLevel(0.1250f, "map/125/%d_%d.png");
-//        tileView.addDetailLevel(0.2500f, "map/250/%d_%d.png");
-//        tileView.addDetailLevel(0.5000f, "map/500/%d_%d.png");
-//        tileView.addDetailLevel(1.0000f, "map/1000/%d_%d.png");
-
-        //tileView.defineBounds(0, 0, 1, 1);
         tileView.defineBounds(0, 0, 2018, 1499);
-        //tileView.defineBounds(0,0,2018,1499);
         tileView.setMarkerAnchorPoints(-0.5f, -0.5f);
         tileView.setScale(0.0f);
 
@@ -65,35 +57,26 @@ public class MapFragment extends Fragment {
         ImageView we = new ImageView(getActivity());
         ImageView wb = new ImageView(getActivity());
         ImageView iet = new ImageView(getActivity());
-        //ImageView cnk = new ImageView(getActivity());
         ImageView ew = new ImageView(getActivity());
         ImageView wa = new ImageView(getActivity());
         ImageView wz = new ImageView(getActivity());
         ImageView zwl = new ImageView(getActivity());
 
-        //[]{x,y,latitude,longtidude,index}
+        cr.setTag(new MarkerDetails(1386, 878, Constants.WI_LAT, Constants.WI_LONG, "Centrum Rekrutacji, Studiów Podyplomowych i Szkoleń", Constants.CENTRUM_REKTURTACJI_EVENT));
+        wi.setTag(new MarkerDetails(1490, 950, Constants.WI_LAT, Constants.WI_LONG, "Wydział Informatyki", Constants.INFORMATYKI_EVENT));
+        wm.setTag(new MarkerDetails(1195, 705, Constants.WM_LAT, Constants.WM_LONG, "Wydział Mechaniczny", Constants.MECHANICZNY_EVENT));
+        we.setTag(new MarkerDetails(1000, 553, Constants.WE_LAT, Constants.WE_LONG, "Wydział Elektryczny", Constants.ELEKTRYCZNY_EVENT));
+        wb.setTag(new MarkerDetails(770, 355, Constants.WB_LAT, Constants.WB_LONG, "Wydział Budownictwa i Inżynierii Środowiska", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
+        ew.setTag(new MarkerDetails(330, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Energia Wiosny!", Constants.ENERGIA_WIOSNY_EVENT));
+        wa.setTag(new MarkerDetails(370, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Architektury", Constants.ARCHITEKTURY_EVENT));
+        wz.setTag(new MarkerDetails(410, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Zarządzania", Constants.ZARZADZANIA_EVENT));
+        zwl.setTag(new MarkerDetails(450, 224, Constants.CNK_LAT, Constants.CNK_LONG, "Zamiejscowy Wydział Leśny", Constants.LESNY_EVENT));
 
-        //CNK1 330 224
-        //CNK2 370 224
-        //CNK3 410 224
-        //CNK4 450 224
-        cr.setTag(new MarkerDetails(1420, 960-20, Constants.WI_LAT, Constants.WI_LONG, "Centrum Rekrutacji, Studiów Podyplomowych i Szkoleń", Constants.CENTRUM_REKTURTACJI_EVENT));
-        wi.setTag(new MarkerDetails(1350, 890-20, Constants.WI_LAT, Constants.WI_LONG, "Wydział Informatyki", Constants.INFORMATYKI_EVENT));
-        wm.setTag(new MarkerDetails(1070, 660-20, Constants.WM_LAT, Constants.WM_LONG, "Wydział Mechaniczny", Constants.MECHANICZNY_EVENT));
-        we.setTag(new MarkerDetails(970, 580-20, Constants.WE_LAT, Constants.WE_LONG, "Wydział Elektryczny", Constants.ELEKTRYCZNY_EVENT));
-        wb.setTag(new MarkerDetails(640, 305-20, Constants.WB_LAT, Constants.WB_LONG, "Wydział Budownictwa i Inżynierii Środowiska", Constants.BUDOWNICTWA_I_SRODOWISKA_EVENT));
-        //iet.setTag(new MarkerDetails(973, 352, Constants.WB_LAT, Constants.WB_LONG, "Inno Eko Tech", Constants.ENERGIA_WIOSNY_EVENT));
-        ew.setTag(new MarkerDetails(330, 224-20, Constants.CNK_LAT, Constants.CNK_LONG, "Energia Wiosny!", Constants.ENERGIA_WIOSNY_EVENT));
-        wa.setTag(new MarkerDetails(370, 224-20, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Architektury", Constants.ARCHITEKTURY_EVENT));
-        wz.setTag(new MarkerDetails(410, 224-20, Constants.CNK_LAT, Constants.CNK_LONG, "Wydział Zarządzania", Constants.ZARZADZANIA_EVENT));
-        zwl.setTag(new MarkerDetails(450, 224-20, Constants.CNK_LAT, Constants.CNK_LONG, "Zamiejscowy Wydział Leśny", Constants.LESNY_EVENT));
-
-        cr.setImageResource(R.drawable.custom_marker_1);
-        wi.setImageResource(R.drawable.custom_marker_2);
+        cr.setImageResource(R.drawable.custom_marker_2);
+        wi.setImageResource(R.drawable.custom_marker_1);
         wm.setImageResource(R.drawable.custom_marker_3);
         we.setImageResource(R.drawable.custom_marker_4);
         wb.setImageResource(R.drawable.custom_marker_5);
-        //iet.setImageResource(R.drawable.custom_marker_5);
         ew.setImageResource(R.drawable.custom_marker_9);
         wa.setImageResource(R.drawable.custom_marker_8);
         wz.setImageResource(R.drawable.custom_marker_7);
@@ -101,16 +84,15 @@ public class MapFragment extends Fragment {
 
         tileView.getMarkerLayout().setMarkerTapListener(markerTapListener);
 
-        tileView.addMarker(wi, 1350, 890-20, null, null);
-        tileView.addMarker(cr, 1420, 960-20, null, null);
-        tileView.addMarker(wm, 1070, 660-20, null, null);
-        tileView.addMarker(we, 970, 580-20, null, null);
-        tileView.addMarker(wb, 640, 305-20, null, null);
-        //tileView.addMarker(iet, 973, 352, null, null);
-        tileView.addMarker(ew, 330, 224-20, null, null);
-        tileView.addMarker(wa, 370, 224-20, null, null);
-        tileView.addMarker(wz, 410, 224-20, null, null);
-        tileView.addMarker(zwl, 450, 224-20, null, null);
+        tileView.addMarker(wi, 1490, 950, null, null);
+        tileView.addMarker(cr, 1386, 878, null, null);
+        tileView.addMarker(wm, 1195, 705, null, null);
+        tileView.addMarker(we, 1000, 553, null, null);
+        tileView.addMarker(wb, 770, 355, null, null);
+        tileView.addMarker(ew, 330, 224,null, null);
+        tileView.addMarker(wa, 370, 224,null, null);
+        tileView.addMarker(wz, 410, 224,null, null);
+        tileView.addMarker(zwl,450, 224, null, null);
 
 
         tileView.setViewportPadding(1000);
@@ -131,12 +113,15 @@ public class MapFragment extends Fragment {
     }
 
     public void frameTo(final double x, final double y) {
-        tileView.post(new Runnable() {
-            @Override
-            public void run() {
-                tileView.scrollToAndCenter(x, y);
-            }
-        });
+        if(tileView.isActivated()){
+            tileView.post(new Runnable() {
+                @Override
+                public void run() {
+                    tileView.scrollToAndCenter(x, y);
+                }
+            });
+        }
+
     }
 
     @Override
@@ -172,26 +157,17 @@ public class MapFragment extends Fragment {
 
         @Override
         public void onMarkerTap(View view, int x, int y) {
-            // get reference to the TileView
+
             TileView tileView = getTileView();
-            //tileView.setScale(2);
-
-            // we saved the coordinate in the marker's tag
-            //double[] position = (double[]) view.getTag();
             MarkerDetails markerDetails = (MarkerDetails) view.getTag();
-            // lets center the screen to that coordinate
-
-            //tileView.slideToAndCenter(x, y);
-            // create a simple callout
             MarkerDialog callout = new MarkerDialog(view.getContext(), markerDetails);
-            // add it to the view tree at the same position and offset as the marker that invoked it
-            tileView.addCallout(callout, markerDetails.getX(), markerDetails.getY(), -0.5f, -1.0f);
-            // a little sugar
-            callout.transitionIn();
-            // stub out some text
-            callout.setTitle(markerDetails.getTitle());
 
+            tileView.addCallout(callout, markerDetails.getX(), markerDetails.getY(), -0.5f, -1.0f);
+
+            callout.transitionIn();
+            callout.setTitle(markerDetails.getTitle());
             tileView.setScale(4);
+
             tileView.moveToMarker(view, false);
         }
     };
